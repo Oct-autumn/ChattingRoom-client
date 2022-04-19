@@ -1,0 +1,34 @@
+syntax = "proto3";
+option optimize_for = SPEED;
+package cn.csuosa.pojo.request;
+option java_package = "cn.csuosa.chatroomcli.proto";
+option java_outer_classname = "Request";
+
+message RequestPOJO
+{
+  enum Operation {
+    RETAIN = 0;           //保留字
+    LOGOUT = 1;           //登出信号
+    JOIN_CHA = 2;         //加入频道（与Channel配套使用）
+    QUIT_CHA = 3;         //退出频道（与Channel配套使用）
+    CREATE_CHA = 4;       //创建频道（与Channel配套使用）
+    SEND_MSG = 5;         //发送消息（与Message配套使用）
+    HEARTBEAT = 6;        //心跳信号
+  }
+
+  Operation        operation  = 1; //标识位
+  optional Message message    = 2; //（可选）消息内容位
+  optional Channel channel    = 3; //（可选）频道信息位
+}
+
+message Channel {
+  string          name = 1;  //频道名
+  optional string nick    = 2;  //（可选，加入频道时必须）使用昵称
+  optional string ticket  = 3;  //（可选，加入私有频道时必须）频道密钥
+}
+
+message Message {
+  int32   type      = 1;  //消息类型
+  int64   timestamp = 2;  //消息发送时间戳
+  bytes   content   = 3;  //消息内容
+}
