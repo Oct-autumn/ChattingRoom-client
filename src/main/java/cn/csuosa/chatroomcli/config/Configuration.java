@@ -11,9 +11,21 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Configuration
 {
+    /**
+     * 服务器URL
+     */
     public String serverURL = "127.0.0.1";
+    /**
+     * 服务器端口
+     */
     public String serverPort = "8080";
+    /**
+     * 用户名
+     */
     public String userNick = "";
+    /**
+     * 认证密码
+     */
     public String pwd = "";
 
     public void debug()

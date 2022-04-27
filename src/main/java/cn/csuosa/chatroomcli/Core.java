@@ -1,15 +1,15 @@
 package cn.csuosa.chatroomcli;
 
-import cn.csuosa.chatroomcli.model.DisplayableChannelInfo;
+import cn.csuosa.chatroomcli.model.Channel;
 import cn.csuosa.chatroomcli.proto.Request;
-import cn.csuosa.chatroomcli.sceneController.TalkSceneController;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+
+import java.util.HashMap;
 
 public class Core
 {
-    public static ObservableList<DisplayableChannelInfo> channelInfoList = FXCollections.observableArrayList();
+    public static HashMap<String, Channel> channelMap = new HashMap<>();
 
     public static void quitApplication()
     {

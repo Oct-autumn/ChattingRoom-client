@@ -1,4 +1,4 @@
-package cn.csuosa.chatroomcli.sceneController;
+package cn.csuosa.chatroomcli.controller.scene;
 
 import cn.csuosa.chatroomcli.Core;
 import cn.csuosa.chatroomcli.GUIBootClass;
@@ -6,18 +6,20 @@ import cn.csuosa.chatroomcli.Main;
 import cn.csuosa.chatroomcli.proto.Request;
 import javafx.application.Platform;
 import javafx.fxml.Initializable;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.effect.BlurType;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.stage.Screen;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.concurrent.atomic.AtomicReference;
 
 import static cn.csuosa.chatroomcli.Main.socketClient;
 
@@ -28,8 +30,37 @@ public class ConnectSceneController implements Initializable
     public TextField textFieldUserNick;
     public PasswordField pwdField;
     public Button buttonConnect;
+    public HBox titleBar;
+    public Button buttonMinimize;
+    public Button buttonExit;
 
-    public void startConnect()
+    /**
+     * 退出程序
+     */
+    public void exitProgram()
+    {
+        GUIBootClass.getStage("connectStage").fireEvent(new WindowEvent(GUIBootClass.getStage("connectStage"), WindowEvent.WINDOW_CLOSE_REQUEST));
+    }
+
+    /**
+     * 最小化窗口
+     */
+    public void minimizeWindow()
+    {
+        GUIBootClass.getStage("connectStage").setIconified(true);
+    }
+
+    public void connectAndRegister()
+    {
+        {//非空检查
+
+        }
+    }
+
+    /**
+     * 登录并连接服务器
+     */
+    public void connectAndLogin()
     {
         {//非空检查
             boolean isComplete = true;
@@ -95,15 +126,11 @@ public class ConnectSceneController implements Initializable
 
         if (Main.socketChannel != null)
         {
-            GUIBootClass.getStage().setScene(GUIBootClass.getTalkWindowScene());
-            TalkSceneController.initialize(GUIBootClass.getStage().getScene());
-            Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
-            GUIBootClass.getStage().setX((screenBounds.getWidth() - GUIBootClass.getTalkWindowScene().getWidth()) / 2);
-            GUIBootClass.getStage().setY((screenBounds.getHeight() - GUIBootClass.getTalkWindowScene().getHeight()) / 2);
-            GUIBootClass.getStage().setMinWidth(GUIBootClass.getTalkWindowScene().getWidth());
-            GUIBootClass.getStage().setMinHeight(GUIBootClass.getTalkWindowScene().getHeight());
-            GUIBootClass.getStage().setTitle("IRC-ChatRoom 聊天");
-            GUIBootClass.getStage().setResizable(true);
+            Stage mainStage = GUIBootClass.getStage("mainStage");
+
+            MainSceneController.initializeControls(mainStage.getScene());
+            mainStage.show();
+            GUIBootClass.getStage("connectStage").close();
             Core.loginAction();
         } else
         {
@@ -117,6 +144,37 @@ public class ConnectSceneController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
+        Stage thisStage = GUIBootClass.getStage("connectStage");
+
+        {//退出按钮 样式设定
+            buttonExit.getStyleClass().clear();
+            buttonExit.getStyleClass().add("button-close-base");
+            buttonExit.getStyleClass().add("button-close-normal");
+            buttonExit.setOnMouseEntered(mouseEvent -> buttonExit.getStyleClass().set(1, "button-close-mouse-on"));
+            buttonExit.setOnMousePressed(mouseEvent -> buttonExit.getStyleClass().set(1, "button-close-mouse-pressed"));
+            buttonExit.setOnMouseExited(mouseEvent -> buttonExit.getStyleClass().set(1, "button-close-normal"));
+            buttonExit.setOnMouseReleased(mouseEvent -> {
+                if (buttonExit.isHover())
+                    buttonExit.getStyleClass().set(1, "button-close-mouse-on");
+                else
+                    buttonExit.getStyleClass().set(1, "button-close-normal");
+            });
+        }
+        {//最小化按钮 样式设定
+            buttonMinimize.getStyleClass().clear();
+            buttonMinimize.getStyleClass().add("button-minimize-base");
+            buttonMinimize.getStyleClass().add("button-minimize-normal");
+            buttonMinimize.setOnMouseEntered(mouseEvent -> buttonMinimize.getStyleClass().set(1, "button-minimize-mouse-on"));
+            buttonMinimize.setOnMouseExited(mouseEvent -> buttonMinimize.getStyleClass().set(1, "button-minimize-normal"));
+            buttonMinimize.setOnMousePressed(mouseEvent -> buttonMinimize.getStyleClass().set(1, "button-minimize-mouse-pressed"));
+            buttonMinimize.setOnMouseReleased(mouseEvent -> {
+                if (buttonMinimize.isHover())
+                    buttonMinimize.getStyleClass().set(1, "button-minimize-mouse-on");
+                else
+                    buttonMinimize.getStyleClass().set(1, "button-minimize-normal");
+            });
+        }
+
         //输入框样式
         setTextFieldFocusStyle(textFieldServerURL);
         setTextFieldFocusStyle(textFieldServerPort);
@@ -170,6 +228,30 @@ public class ConnectSceneController implements Initializable
         textFieldServerPort.setText(Main.config.getServerPort());
         textFieldUserNick.setText(Main.config.getUserNick());
         pwdField.setText(Main.config.getPwd());
+
+        {//拖拽标题栏重定位窗口
+            AtomicReference<Double> mouseX_ori = new AtomicReference<>((double) 0);
+            AtomicReference<Double> mouseY_ori = new AtomicReference<>((double) 0);
+            AtomicReference<Double> stageX_ori = new AtomicReference<>((double) 0);
+            AtomicReference<Double> stageY_ori = new AtomicReference<>((double) 0);
+
+            titleBar.setOnMousePressed(mouseEvent -> {
+                mouseX_ori.set(mouseEvent.getScreenX());
+                mouseY_ori.set(mouseEvent.getScreenY());
+                stageX_ori.set(thisStage.getX());
+                stageY_ori.set(thisStage.getY());
+            });
+            titleBar.setOnMouseDragged(mouseEvent -> {//移动窗口
+                double finalX = stageX_ori.get() + mouseEvent.getScreenX() - mouseX_ori.get();
+                double finalY = stageY_ori.get() + mouseEvent.getScreenY() - mouseY_ori.get();
+                finalX = Math.max(0, finalX);
+                finalX = Math.min(GUIBootClass.getScreenBounds().getMaxX() - thisStage.getWidth(), finalX);
+                finalY = Math.max(0, finalY);
+                finalY = Math.min(GUIBootClass.getScreenBounds().getMaxY() - 25, finalY);
+                thisStage.setX(finalX);
+                thisStage.setY(finalY);
+            });
+        }
     }
 
     private void setTextFieldFocusStyle(TextField textField)
@@ -197,9 +279,13 @@ public class ConnectSceneController implements Initializable
         });
     }
 
-    public static void initialize(Scene thisScene)
+    public static void initializeControls(Scene thisScene)
     {
         Platform.runLater(() -> {
+            thisScene.setFill(Color.TRANSPARENT);
+            /*GaussianBlur gaussianBlur = new GaussianBlur();
+            gaussianBlur.setRadius(10.5);
+            thisScene.lookup("#mainVBox").setEffect(gaussianBlur);*/
             ((TextField) thisScene.lookup("#textFieldServerURL")).setText(Main.config.getServerURL());
             ((TextField) thisScene.lookup("#textFieldServerPort")).setText(Main.config.getServerPort());
             ((TextField) thisScene.lookup("#textFieldUserNick")).setText(Main.config.getUserNick());

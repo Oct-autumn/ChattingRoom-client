@@ -39,30 +39,30 @@ public final class Request {
 
     /**
      * <pre>
-     *（可选）消息内容位
+     *（可选）用户信息位
      * </pre>
      *
-     * <code>optional .cn.csuosa.pojo.request.Message message = 2;</code>
-     * @return Whether the message field is set.
+     * <code>optional .cn.csuosa.pojo.request.User user = 2;</code>
+     * @return Whether the user field is set.
      */
-    boolean hasMessage();
+    boolean hasUser();
     /**
      * <pre>
-     *（可选）消息内容位
+     *（可选）用户信息位
      * </pre>
      *
-     * <code>optional .cn.csuosa.pojo.request.Message message = 2;</code>
-     * @return The message.
+     * <code>optional .cn.csuosa.pojo.request.User user = 2;</code>
+     * @return The user.
      */
-    cn.csuosa.chatroomcli.proto.Request.Message getMessage();
+    cn.csuosa.chatroomcli.proto.Request.User getUser();
     /**
      * <pre>
-     *（可选）消息内容位
+     *（可选）用户信息位
      * </pre>
      *
-     * <code>optional .cn.csuosa.pojo.request.Message message = 2;</code>
+     * <code>optional .cn.csuosa.pojo.request.User user = 2;</code>
      */
-    cn.csuosa.chatroomcli.proto.Request.MessageOrBuilder getMessageOrBuilder();
+    cn.csuosa.chatroomcli.proto.Request.UserOrBuilder getUserOrBuilder();
 
     /**
      * <pre>
@@ -90,6 +90,33 @@ public final class Request {
      * <code>optional .cn.csuosa.pojo.request.Channel channel = 3;</code>
      */
     cn.csuosa.chatroomcli.proto.Request.ChannelOrBuilder getChannelOrBuilder();
+
+    /**
+     * <pre>
+     *（可选）消息内容位
+     * </pre>
+     *
+     * <code>optional .cn.csuosa.pojo.request.Message message = 4;</code>
+     * @return Whether the message field is set.
+     */
+    boolean hasMessage();
+    /**
+     * <pre>
+     *（可选）消息内容位
+     * </pre>
+     *
+     * <code>optional .cn.csuosa.pojo.request.Message message = 4;</code>
+     * @return The message.
+     */
+    cn.csuosa.chatroomcli.proto.Request.Message getMessage();
+    /**
+     * <pre>
+     *（可选）消息内容位
+     * </pre>
+     *
+     * <code>optional .cn.csuosa.pojo.request.Message message = 4;</code>
+     */
+    cn.csuosa.chatroomcli.proto.Request.MessageOrBuilder getMessageOrBuilder();
   }
   /**
    * Protobuf type {@code cn.csuosa.pojo.request.RequestPOJO}
@@ -145,14 +172,14 @@ public final class Request {
               break;
             }
             case 18: {
-              cn.csuosa.chatroomcli.proto.Request.Message.Builder subBuilder = null;
+              cn.csuosa.chatroomcli.proto.Request.User.Builder subBuilder = null;
               if (((bitField0_ & 0x00000001) != 0)) {
-                subBuilder = message_.toBuilder();
+                subBuilder = user_.toBuilder();
               }
-              message_ = input.readMessage(cn.csuosa.chatroomcli.proto.Request.Message.parser(), extensionRegistry);
+              user_ = input.readMessage(cn.csuosa.chatroomcli.proto.Request.User.parser(), extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(message_);
-                message_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(user_);
+                user_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00000001;
               break;
@@ -168,6 +195,19 @@ public final class Request {
                 channel_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00000002;
+              break;
+            }
+            case 34: {
+              cn.csuosa.chatroomcli.proto.Request.Message.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000004) != 0)) {
+                subBuilder = message_.toBuilder();
+              }
+              message_ = input.readMessage(cn.csuosa.chatroomcli.proto.Request.Message.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(message_);
+                message_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000004;
               break;
             }
             default: {
@@ -217,52 +257,76 @@ public final class Request {
       RETAIN(0),
       /**
        * <pre>
-       *登出信号
+       *注册
        * </pre>
        *
-       * <code>LOGOUT = 1;</code>
+       * <code>REGISTER = 1;</code>
        */
-      LOGOUT(1),
+      REGISTER(1),
+      /**
+       * <pre>
+       *登入
+       * </pre>
+       *
+       * <code>LOGIN = 2;</code>
+       */
+      LOGIN(2),
+      /**
+       * <pre>
+       *登出
+       * </pre>
+       *
+       * <code>LOGOUT = 3;</code>
+       */
+      LOGOUT(3),
+      /**
+       * <pre>
+       *更新用户信息
+       * </pre>
+       *
+       * <code>UPDATE_INFO = 4;</code>
+       */
+      UPDATE_INFO(4),
       /**
        * <pre>
        *加入频道（与Channel配套使用）
        * </pre>
        *
-       * <code>JOIN_CHA = 2;</code>
+       * <code>JOIN_CHA = 5;</code>
        */
-      JOIN_CHA(2),
+      JOIN_CHA(5),
       /**
        * <pre>
        *退出频道（与Channel配套使用）
        * </pre>
        *
-       * <code>QUIT_CHA = 3;</code>
+       * <code>QUIT_CHA = 6;</code>
        */
-      QUIT_CHA(3),
+      QUIT_CHA(6),
       /**
        * <pre>
        *创建频道（与Channel配套使用）
        * </pre>
        *
-       * <code>CREATE_CHA = 4;</code>
+       * <code>CREATE_CHA = 7;</code>
        */
-      CREATE_CHA(4),
+      CREATE_CHA(7),
       /**
        * <pre>
        *发送消息（与Message配套使用）
        * </pre>
        *
-       * <code>SEND_MSG = 5;</code>
+       * <code>SEND_MSG = 8;</code>
        */
-      SEND_MSG(5),
+      SEND_MSG(8),
       /**
        * <pre>
        *心跳信号
        * </pre>
        *
-       * <code>HEARTBEAT = 6;</code>
+       * <code>HEARTBEAT = 9;</code>
        */
-      HEARTBEAT(6),
+      HEARTBEAT(9),
       UNRECOGNIZED(-1),
       ;
 
@@ -276,52 +340,76 @@ public final class Request {
       public static final int RETAIN_VALUE = 0;
       /**
        * <pre>
-       *登出信号
+       *注册
        * </pre>
        *
-       * <code>LOGOUT = 1;</code>
+       * <code>REGISTER = 1;</code>
        */
-      public static final int LOGOUT_VALUE = 1;
+      public static final int REGISTER_VALUE = 1;
+      /**
+       * <pre>
+       *登入
+       * </pre>
+       *
+       * <code>LOGIN = 2;</code>
+       */
+      public static final int LOGIN_VALUE = 2;
+      /**
+       * <pre>
+       *登出
+       * </pre>
+       *
+       * <code>LOGOUT = 3;</code>
+       */
+      public static final int LOGOUT_VALUE = 3;
+      /**
+       * <pre>
+       *更新用户信息
+       * </pre>
+       *
+       * <code>UPDATE_INFO = 4;</code>
+       */
+      public static final int UPDATE_INFO_VALUE = 4;
       /**
        * <pre>
        *加入频道（与Channel配套使用）
        * </pre>
        *
-       * <code>JOIN_CHA = 2;</code>
+       * <code>JOIN_CHA = 5;</code>
        */
-      public static final int JOIN_CHA_VALUE = 2;
+      public static final int JOIN_CHA_VALUE = 5;
       /**
        * <pre>
        *退出频道（与Channel配套使用）
        * </pre>
        *
-       * <code>QUIT_CHA = 3;</code>
+       * <code>QUIT_CHA = 6;</code>
        */
-      public static final int QUIT_CHA_VALUE = 3;
+      public static final int QUIT_CHA_VALUE = 6;
       /**
        * <pre>
        *创建频道（与Channel配套使用）
        * </pre>
        *
-       * <code>CREATE_CHA = 4;</code>
+       * <code>CREATE_CHA = 7;</code>
        */
-      public static final int CREATE_CHA_VALUE = 4;
+      public static final int CREATE_CHA_VALUE = 7;
       /**
        * <pre>
        *发送消息（与Message配套使用）
        * </pre>
        *
-       * <code>SEND_MSG = 5;</code>
+       * <code>SEND_MSG = 8;</code>
        */
-      public static final int SEND_MSG_VALUE = 5;
+      public static final int SEND_MSG_VALUE = 8;
       /**
        * <pre>
        *心跳信号
        * </pre>
        *
-       * <code>HEARTBEAT = 6;</code>
+       * <code>HEARTBEAT = 9;</code>
        */
-      public static final int HEARTBEAT_VALUE = 6;
+      public static final int HEARTBEAT_VALUE = 9;
 
 
       public final int getNumber() {
@@ -349,12 +437,15 @@ public final class Request {
       public static Operation forNumber(int value) {
         switch (value) {
           case 0: return RETAIN;
-          case 1: return LOGOUT;
-          case 2: return JOIN_CHA;
-          case 3: return QUIT_CHA;
-          case 4: return CREATE_CHA;
-          case 5: return SEND_MSG;
-          case 6: return HEARTBEAT;
+          case 1: return REGISTER;
+          case 2: return LOGIN;
+          case 3: return LOGOUT;
+          case 4: return UPDATE_INFO;
+          case 5: return JOIN_CHA;
+          case 6: return QUIT_CHA;
+          case 7: return CREATE_CHA;
+          case 8: return SEND_MSG;
+          case 9: return HEARTBEAT;
           default: return null;
         }
       }
@@ -439,42 +530,42 @@ public final class Request {
       return result == null ? cn.csuosa.chatroomcli.proto.Request.RequestPOJO.Operation.UNRECOGNIZED : result;
     }
 
-    public static final int MESSAGE_FIELD_NUMBER = 2;
-    private cn.csuosa.chatroomcli.proto.Request.Message message_;
+    public static final int USER_FIELD_NUMBER = 2;
+    private cn.csuosa.chatroomcli.proto.Request.User user_;
     /**
      * <pre>
-     *（可选）消息内容位
+     *（可选）用户信息位
      * </pre>
      *
-     * <code>optional .cn.csuosa.pojo.request.Message message = 2;</code>
-     * @return Whether the message field is set.
+     * <code>optional .cn.csuosa.pojo.request.User user = 2;</code>
+     * @return Whether the user field is set.
      */
     @java.lang.Override
-    public boolean hasMessage() {
+    public boolean hasUser() {
       return ((bitField0_ & 0x00000001) != 0);
     }
     /**
      * <pre>
-     *（可选）消息内容位
+     *（可选）用户信息位
      * </pre>
      *
-     * <code>optional .cn.csuosa.pojo.request.Message message = 2;</code>
-     * @return The message.
+     * <code>optional .cn.csuosa.pojo.request.User user = 2;</code>
+     * @return The user.
      */
     @java.lang.Override
-    public cn.csuosa.chatroomcli.proto.Request.Message getMessage() {
-      return message_ == null ? cn.csuosa.chatroomcli.proto.Request.Message.getDefaultInstance() : message_;
+    public cn.csuosa.chatroomcli.proto.Request.User getUser() {
+      return user_ == null ? cn.csuosa.chatroomcli.proto.Request.User.getDefaultInstance() : user_;
     }
     /**
      * <pre>
-     *（可选）消息内容位
+     *（可选）用户信息位
      * </pre>
      *
-     * <code>optional .cn.csuosa.pojo.request.Message message = 2;</code>
+     * <code>optional .cn.csuosa.pojo.request.User user = 2;</code>
      */
     @java.lang.Override
-    public cn.csuosa.chatroomcli.proto.Request.MessageOrBuilder getMessageOrBuilder() {
-      return message_ == null ? cn.csuosa.chatroomcli.proto.Request.Message.getDefaultInstance() : message_;
+    public cn.csuosa.chatroomcli.proto.Request.UserOrBuilder getUserOrBuilder() {
+      return user_ == null ? cn.csuosa.chatroomcli.proto.Request.User.getDefaultInstance() : user_;
     }
 
     public static final int CHANNEL_FIELD_NUMBER = 3;
@@ -515,6 +606,44 @@ public final class Request {
       return channel_ == null ? cn.csuosa.chatroomcli.proto.Request.Channel.getDefaultInstance() : channel_;
     }
 
+    public static final int MESSAGE_FIELD_NUMBER = 4;
+    private cn.csuosa.chatroomcli.proto.Request.Message message_;
+    /**
+     * <pre>
+     *（可选）消息内容位
+     * </pre>
+     *
+     * <code>optional .cn.csuosa.pojo.request.Message message = 4;</code>
+     * @return Whether the message field is set.
+     */
+    @java.lang.Override
+    public boolean hasMessage() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <pre>
+     *（可选）消息内容位
+     * </pre>
+     *
+     * <code>optional .cn.csuosa.pojo.request.Message message = 4;</code>
+     * @return The message.
+     */
+    @java.lang.Override
+    public cn.csuosa.chatroomcli.proto.Request.Message getMessage() {
+      return message_ == null ? cn.csuosa.chatroomcli.proto.Request.Message.getDefaultInstance() : message_;
+    }
+    /**
+     * <pre>
+     *（可选）消息内容位
+     * </pre>
+     *
+     * <code>optional .cn.csuosa.pojo.request.Message message = 4;</code>
+     */
+    @java.lang.Override
+    public cn.csuosa.chatroomcli.proto.Request.MessageOrBuilder getMessageOrBuilder() {
+      return message_ == null ? cn.csuosa.chatroomcli.proto.Request.Message.getDefaultInstance() : message_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -533,10 +662,13 @@ public final class Request {
         output.writeEnum(1, operation_);
       }
       if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeMessage(2, getMessage());
+        output.writeMessage(2, getUser());
       }
       if (((bitField0_ & 0x00000002) != 0)) {
         output.writeMessage(3, getChannel());
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        output.writeMessage(4, getMessage());
       }
       unknownFields.writeTo(output);
     }
@@ -553,11 +685,15 @@ public final class Request {
       }
       if (((bitField0_ & 0x00000001) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getMessage());
+          .computeMessageSize(2, getUser());
       }
       if (((bitField0_ & 0x00000002) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, getChannel());
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, getMessage());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -575,15 +711,20 @@ public final class Request {
       cn.csuosa.chatroomcli.proto.Request.RequestPOJO other = (cn.csuosa.chatroomcli.proto.Request.RequestPOJO) obj;
 
       if (operation_ != other.operation_) return false;
-      if (hasMessage() != other.hasMessage()) return false;
-      if (hasMessage()) {
-        if (!getMessage()
-            .equals(other.getMessage())) return false;
+      if (hasUser() != other.hasUser()) return false;
+      if (hasUser()) {
+        if (!getUser()
+            .equals(other.getUser())) return false;
       }
       if (hasChannel() != other.hasChannel()) return false;
       if (hasChannel()) {
         if (!getChannel()
             .equals(other.getChannel())) return false;
+      }
+      if (hasMessage() != other.hasMessage()) return false;
+      if (hasMessage()) {
+        if (!getMessage()
+            .equals(other.getMessage())) return false;
       }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -598,13 +739,17 @@ public final class Request {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + OPERATION_FIELD_NUMBER;
       hash = (53 * hash) + operation_;
-      if (hasMessage()) {
-        hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
-        hash = (53 * hash) + getMessage().hashCode();
+      if (hasUser()) {
+        hash = (37 * hash) + USER_FIELD_NUMBER;
+        hash = (53 * hash) + getUser().hashCode();
       }
       if (hasChannel()) {
         hash = (37 * hash) + CHANNEL_FIELD_NUMBER;
         hash = (53 * hash) + getChannel().hashCode();
+      }
+      if (hasMessage()) {
+        hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
+        hash = (53 * hash) + getMessage().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -734,8 +879,9 @@ public final class Request {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
-          getMessageFieldBuilder();
+          getUserFieldBuilder();
           getChannelFieldBuilder();
+          getMessageFieldBuilder();
         }
       }
       @java.lang.Override
@@ -743,10 +889,10 @@ public final class Request {
         super.clear();
         operation_ = 0;
 
-        if (messageBuilder_ == null) {
-          message_ = null;
+        if (userBuilder_ == null) {
+          user_ = null;
         } else {
-          messageBuilder_.clear();
+          userBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000001);
         if (channelBuilder_ == null) {
@@ -755,6 +901,12 @@ public final class Request {
           channelBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000002);
+        if (messageBuilder_ == null) {
+          message_ = null;
+        } else {
+          messageBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -785,10 +937,10 @@ public final class Request {
         int to_bitField0_ = 0;
         result.operation_ = operation_;
         if (((from_bitField0_ & 0x00000001) != 0)) {
-          if (messageBuilder_ == null) {
-            result.message_ = message_;
+          if (userBuilder_ == null) {
+            result.user_ = user_;
           } else {
-            result.message_ = messageBuilder_.build();
+            result.user_ = userBuilder_.build();
           }
           to_bitField0_ |= 0x00000001;
         }
@@ -799,6 +951,14 @@ public final class Request {
             result.channel_ = channelBuilder_.build();
           }
           to_bitField0_ |= 0x00000002;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          if (messageBuilder_ == null) {
+            result.message_ = message_;
+          } else {
+            result.message_ = messageBuilder_.build();
+          }
+          to_bitField0_ |= 0x00000004;
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -852,11 +1012,14 @@ public final class Request {
         if (other.operation_ != 0) {
           setOperationValue(other.getOperationValue());
         }
-        if (other.hasMessage()) {
-          mergeMessage(other.getMessage());
+        if (other.hasUser()) {
+          mergeUser(other.getUser());
         }
         if (other.hasChannel()) {
           mergeChannel(other.getChannel());
+        }
+        if (other.hasMessage()) {
+          mergeMessage(other.getMessage());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -962,160 +1125,160 @@ public final class Request {
         return this;
       }
 
-      private cn.csuosa.chatroomcli.proto.Request.Message message_;
+      private cn.csuosa.chatroomcli.proto.Request.User user_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          cn.csuosa.chatroomcli.proto.Request.Message, cn.csuosa.chatroomcli.proto.Request.Message.Builder, cn.csuosa.chatroomcli.proto.Request.MessageOrBuilder> messageBuilder_;
+          cn.csuosa.chatroomcli.proto.Request.User, cn.csuosa.chatroomcli.proto.Request.User.Builder, cn.csuosa.chatroomcli.proto.Request.UserOrBuilder> userBuilder_;
       /**
        * <pre>
-       *（可选）消息内容位
+       *（可选）用户信息位
        * </pre>
        *
-       * <code>optional .cn.csuosa.pojo.request.Message message = 2;</code>
-       * @return Whether the message field is set.
+       * <code>optional .cn.csuosa.pojo.request.User user = 2;</code>
+       * @return Whether the user field is set.
        */
-      public boolean hasMessage() {
+      public boolean hasUser() {
         return ((bitField0_ & 0x00000001) != 0);
       }
       /**
        * <pre>
-       *（可选）消息内容位
+       *（可选）用户信息位
        * </pre>
        *
-       * <code>optional .cn.csuosa.pojo.request.Message message = 2;</code>
-       * @return The message.
+       * <code>optional .cn.csuosa.pojo.request.User user = 2;</code>
+       * @return The user.
        */
-      public cn.csuosa.chatroomcli.proto.Request.Message getMessage() {
-        if (messageBuilder_ == null) {
-          return message_ == null ? cn.csuosa.chatroomcli.proto.Request.Message.getDefaultInstance() : message_;
+      public cn.csuosa.chatroomcli.proto.Request.User getUser() {
+        if (userBuilder_ == null) {
+          return user_ == null ? cn.csuosa.chatroomcli.proto.Request.User.getDefaultInstance() : user_;
         } else {
-          return messageBuilder_.getMessage();
+          return userBuilder_.getMessage();
         }
       }
       /**
        * <pre>
-       *（可选）消息内容位
+       *（可选）用户信息位
        * </pre>
        *
-       * <code>optional .cn.csuosa.pojo.request.Message message = 2;</code>
+       * <code>optional .cn.csuosa.pojo.request.User user = 2;</code>
        */
-      public Builder setMessage(cn.csuosa.chatroomcli.proto.Request.Message value) {
-        if (messageBuilder_ == null) {
+      public Builder setUser(cn.csuosa.chatroomcli.proto.Request.User value) {
+        if (userBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          message_ = value;
+          user_ = value;
           onChanged();
         } else {
-          messageBuilder_.setMessage(value);
+          userBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00000001;
         return this;
       }
       /**
        * <pre>
-       *（可选）消息内容位
+       *（可选）用户信息位
        * </pre>
        *
-       * <code>optional .cn.csuosa.pojo.request.Message message = 2;</code>
+       * <code>optional .cn.csuosa.pojo.request.User user = 2;</code>
        */
-      public Builder setMessage(
-          cn.csuosa.chatroomcli.proto.Request.Message.Builder builderForValue) {
-        if (messageBuilder_ == null) {
-          message_ = builderForValue.build();
+      public Builder setUser(
+          cn.csuosa.chatroomcli.proto.Request.User.Builder builderForValue) {
+        if (userBuilder_ == null) {
+          user_ = builderForValue.build();
           onChanged();
         } else {
-          messageBuilder_.setMessage(builderForValue.build());
+          userBuilder_.setMessage(builderForValue.build());
         }
         bitField0_ |= 0x00000001;
         return this;
       }
       /**
        * <pre>
-       *（可选）消息内容位
+       *（可选）用户信息位
        * </pre>
        *
-       * <code>optional .cn.csuosa.pojo.request.Message message = 2;</code>
+       * <code>optional .cn.csuosa.pojo.request.User user = 2;</code>
        */
-      public Builder mergeMessage(cn.csuosa.chatroomcli.proto.Request.Message value) {
-        if (messageBuilder_ == null) {
+      public Builder mergeUser(cn.csuosa.chatroomcli.proto.Request.User value) {
+        if (userBuilder_ == null) {
           if (((bitField0_ & 0x00000001) != 0) &&
-              message_ != null &&
-              message_ != cn.csuosa.chatroomcli.proto.Request.Message.getDefaultInstance()) {
-            message_ =
-              cn.csuosa.chatroomcli.proto.Request.Message.newBuilder(message_).mergeFrom(value).buildPartial();
+              user_ != null &&
+              user_ != cn.csuosa.chatroomcli.proto.Request.User.getDefaultInstance()) {
+            user_ =
+              cn.csuosa.chatroomcli.proto.Request.User.newBuilder(user_).mergeFrom(value).buildPartial();
           } else {
-            message_ = value;
+            user_ = value;
           }
           onChanged();
         } else {
-          messageBuilder_.mergeFrom(value);
+          userBuilder_.mergeFrom(value);
         }
         bitField0_ |= 0x00000001;
         return this;
       }
       /**
        * <pre>
-       *（可选）消息内容位
+       *（可选）用户信息位
        * </pre>
        *
-       * <code>optional .cn.csuosa.pojo.request.Message message = 2;</code>
+       * <code>optional .cn.csuosa.pojo.request.User user = 2;</code>
        */
-      public Builder clearMessage() {
-        if (messageBuilder_ == null) {
-          message_ = null;
+      public Builder clearUser() {
+        if (userBuilder_ == null) {
+          user_ = null;
           onChanged();
         } else {
-          messageBuilder_.clear();
+          userBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
       /**
        * <pre>
-       *（可选）消息内容位
+       *（可选）用户信息位
        * </pre>
        *
-       * <code>optional .cn.csuosa.pojo.request.Message message = 2;</code>
+       * <code>optional .cn.csuosa.pojo.request.User user = 2;</code>
        */
-      public cn.csuosa.chatroomcli.proto.Request.Message.Builder getMessageBuilder() {
+      public cn.csuosa.chatroomcli.proto.Request.User.Builder getUserBuilder() {
         bitField0_ |= 0x00000001;
         onChanged();
-        return getMessageFieldBuilder().getBuilder();
+        return getUserFieldBuilder().getBuilder();
       }
       /**
        * <pre>
-       *（可选）消息内容位
+       *（可选）用户信息位
        * </pre>
        *
-       * <code>optional .cn.csuosa.pojo.request.Message message = 2;</code>
+       * <code>optional .cn.csuosa.pojo.request.User user = 2;</code>
        */
-      public cn.csuosa.chatroomcli.proto.Request.MessageOrBuilder getMessageOrBuilder() {
-        if (messageBuilder_ != null) {
-          return messageBuilder_.getMessageOrBuilder();
+      public cn.csuosa.chatroomcli.proto.Request.UserOrBuilder getUserOrBuilder() {
+        if (userBuilder_ != null) {
+          return userBuilder_.getMessageOrBuilder();
         } else {
-          return message_ == null ?
-              cn.csuosa.chatroomcli.proto.Request.Message.getDefaultInstance() : message_;
+          return user_ == null ?
+              cn.csuosa.chatroomcli.proto.Request.User.getDefaultInstance() : user_;
         }
       }
       /**
        * <pre>
-       *（可选）消息内容位
+       *（可选）用户信息位
        * </pre>
        *
-       * <code>optional .cn.csuosa.pojo.request.Message message = 2;</code>
+       * <code>optional .cn.csuosa.pojo.request.User user = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          cn.csuosa.chatroomcli.proto.Request.Message, cn.csuosa.chatroomcli.proto.Request.Message.Builder, cn.csuosa.chatroomcli.proto.Request.MessageOrBuilder> 
-          getMessageFieldBuilder() {
-        if (messageBuilder_ == null) {
-          messageBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              cn.csuosa.chatroomcli.proto.Request.Message, cn.csuosa.chatroomcli.proto.Request.Message.Builder, cn.csuosa.chatroomcli.proto.Request.MessageOrBuilder>(
-                  getMessage(),
+          cn.csuosa.chatroomcli.proto.Request.User, cn.csuosa.chatroomcli.proto.Request.User.Builder, cn.csuosa.chatroomcli.proto.Request.UserOrBuilder> 
+          getUserFieldBuilder() {
+        if (userBuilder_ == null) {
+          userBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              cn.csuosa.chatroomcli.proto.Request.User, cn.csuosa.chatroomcli.proto.Request.User.Builder, cn.csuosa.chatroomcli.proto.Request.UserOrBuilder>(
+                  getUser(),
                   getParentForChildren(),
                   isClean());
-          message_ = null;
+          user_ = null;
         }
-        return messageBuilder_;
+        return userBuilder_;
       }
 
       private cn.csuosa.chatroomcli.proto.Request.Channel channel_;
@@ -1273,6 +1436,162 @@ public final class Request {
         }
         return channelBuilder_;
       }
+
+      private cn.csuosa.chatroomcli.proto.Request.Message message_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          cn.csuosa.chatroomcli.proto.Request.Message, cn.csuosa.chatroomcli.proto.Request.Message.Builder, cn.csuosa.chatroomcli.proto.Request.MessageOrBuilder> messageBuilder_;
+      /**
+       * <pre>
+       *（可选）消息内容位
+       * </pre>
+       *
+       * <code>optional .cn.csuosa.pojo.request.Message message = 4;</code>
+       * @return Whether the message field is set.
+       */
+      public boolean hasMessage() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <pre>
+       *（可选）消息内容位
+       * </pre>
+       *
+       * <code>optional .cn.csuosa.pojo.request.Message message = 4;</code>
+       * @return The message.
+       */
+      public cn.csuosa.chatroomcli.proto.Request.Message getMessage() {
+        if (messageBuilder_ == null) {
+          return message_ == null ? cn.csuosa.chatroomcli.proto.Request.Message.getDefaultInstance() : message_;
+        } else {
+          return messageBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       *（可选）消息内容位
+       * </pre>
+       *
+       * <code>optional .cn.csuosa.pojo.request.Message message = 4;</code>
+       */
+      public Builder setMessage(cn.csuosa.chatroomcli.proto.Request.Message value) {
+        if (messageBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          message_ = value;
+          onChanged();
+        } else {
+          messageBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <pre>
+       *（可选）消息内容位
+       * </pre>
+       *
+       * <code>optional .cn.csuosa.pojo.request.Message message = 4;</code>
+       */
+      public Builder setMessage(
+          cn.csuosa.chatroomcli.proto.Request.Message.Builder builderForValue) {
+        if (messageBuilder_ == null) {
+          message_ = builderForValue.build();
+          onChanged();
+        } else {
+          messageBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <pre>
+       *（可选）消息内容位
+       * </pre>
+       *
+       * <code>optional .cn.csuosa.pojo.request.Message message = 4;</code>
+       */
+      public Builder mergeMessage(cn.csuosa.chatroomcli.proto.Request.Message value) {
+        if (messageBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) != 0) &&
+              message_ != null &&
+              message_ != cn.csuosa.chatroomcli.proto.Request.Message.getDefaultInstance()) {
+            message_ =
+              cn.csuosa.chatroomcli.proto.Request.Message.newBuilder(message_).mergeFrom(value).buildPartial();
+          } else {
+            message_ = value;
+          }
+          onChanged();
+        } else {
+          messageBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <pre>
+       *（可选）消息内容位
+       * </pre>
+       *
+       * <code>optional .cn.csuosa.pojo.request.Message message = 4;</code>
+       */
+      public Builder clearMessage() {
+        if (messageBuilder_ == null) {
+          message_ = null;
+          onChanged();
+        } else {
+          messageBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+      /**
+       * <pre>
+       *（可选）消息内容位
+       * </pre>
+       *
+       * <code>optional .cn.csuosa.pojo.request.Message message = 4;</code>
+       */
+      public cn.csuosa.chatroomcli.proto.Request.Message.Builder getMessageBuilder() {
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return getMessageFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       *（可选）消息内容位
+       * </pre>
+       *
+       * <code>optional .cn.csuosa.pojo.request.Message message = 4;</code>
+       */
+      public cn.csuosa.chatroomcli.proto.Request.MessageOrBuilder getMessageOrBuilder() {
+        if (messageBuilder_ != null) {
+          return messageBuilder_.getMessageOrBuilder();
+        } else {
+          return message_ == null ?
+              cn.csuosa.chatroomcli.proto.Request.Message.getDefaultInstance() : message_;
+        }
+      }
+      /**
+       * <pre>
+       *（可选）消息内容位
+       * </pre>
+       *
+       * <code>optional .cn.csuosa.pojo.request.Message message = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          cn.csuosa.chatroomcli.proto.Request.Message, cn.csuosa.chatroomcli.proto.Request.Message.Builder, cn.csuosa.chatroomcli.proto.Request.MessageOrBuilder> 
+          getMessageFieldBuilder() {
+        if (messageBuilder_ == null) {
+          messageBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              cn.csuosa.chatroomcli.proto.Request.Message, cn.csuosa.chatroomcli.proto.Request.Message.Builder, cn.csuosa.chatroomcli.proto.Request.MessageOrBuilder>(
+                  getMessage(),
+                  getParentForChildren(),
+                  isClean());
+          message_ = null;
+        }
+        return messageBuilder_;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -1321,6 +1640,1118 @@ public final class Request {
 
     @java.lang.Override
     public cn.csuosa.chatroomcli.proto.Request.RequestPOJO getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface UserOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:cn.csuosa.pojo.request.User)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     *账号
+     * </pre>
+     *
+     * <code>optional int64 uid = 1;</code>
+     * @return Whether the uid field is set.
+     */
+    boolean hasUid();
+    /**
+     * <pre>
+     *账号
+     * </pre>
+     *
+     * <code>optional int64 uid = 1;</code>
+     * @return The uid.
+     */
+    long getUid();
+
+    /**
+     * <pre>
+     *邮箱（注册时为必须）
+     * </pre>
+     *
+     * <code>optional string email = 2;</code>
+     * @return Whether the email field is set.
+     */
+    boolean hasEmail();
+    /**
+     * <pre>
+     *邮箱（注册时为必须）
+     * </pre>
+     *
+     * <code>optional string email = 2;</code>
+     * @return The email.
+     */
+    java.lang.String getEmail();
+    /**
+     * <pre>
+     *邮箱（注册时为必须）
+     * </pre>
+     *
+     * <code>optional string email = 2;</code>
+     * @return The bytes for email.
+     */
+    com.google.protobuf.ByteString
+        getEmailBytes();
+
+    /**
+     * <pre>
+     *（仅在注册时）默认昵称
+     * </pre>
+     *
+     * <code>optional string defaultNick = 3;</code>
+     * @return Whether the defaultNick field is set.
+     */
+    boolean hasDefaultNick();
+    /**
+     * <pre>
+     *（仅在注册时）默认昵称
+     * </pre>
+     *
+     * <code>optional string defaultNick = 3;</code>
+     * @return The defaultNick.
+     */
+    java.lang.String getDefaultNick();
+    /**
+     * <pre>
+     *（仅在注册时）默认昵称
+     * </pre>
+     *
+     * <code>optional string defaultNick = 3;</code>
+     * @return The bytes for defaultNick.
+     */
+    com.google.protobuf.ByteString
+        getDefaultNickBytes();
+
+    /**
+     * <pre>
+     *密码
+     * </pre>
+     *
+     * <code>bytes pwd = 4;</code>
+     * @return The pwd.
+     */
+    com.google.protobuf.ByteString getPwd();
+  }
+  /**
+   * <pre>
+   *用于注册、登录
+   * </pre>
+   *
+   * Protobuf type {@code cn.csuosa.pojo.request.User}
+   */
+  public static final class User extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:cn.csuosa.pojo.request.User)
+      UserOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use User.newBuilder() to construct.
+    private User(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private User() {
+      email_ = "";
+      defaultNick_ = "";
+      pwd_ = com.google.protobuf.ByteString.EMPTY;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new User();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private User(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+              bitField0_ |= 0x00000001;
+              uid_ = input.readInt64();
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000002;
+              email_ = s;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000004;
+              defaultNick_ = s;
+              break;
+            }
+            case 34: {
+
+              pwd_ = input.readBytes();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return cn.csuosa.chatroomcli.proto.Request.internal_static_cn_csuosa_pojo_request_User_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return cn.csuosa.chatroomcli.proto.Request.internal_static_cn_csuosa_pojo_request_User_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              cn.csuosa.chatroomcli.proto.Request.User.class, cn.csuosa.chatroomcli.proto.Request.User.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int UID_FIELD_NUMBER = 1;
+    private long uid_;
+    /**
+     * <pre>
+     *账号
+     * </pre>
+     *
+     * <code>optional int64 uid = 1;</code>
+     * @return Whether the uid field is set.
+     */
+    @java.lang.Override
+    public boolean hasUid() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <pre>
+     *账号
+     * </pre>
+     *
+     * <code>optional int64 uid = 1;</code>
+     * @return The uid.
+     */
+    @java.lang.Override
+    public long getUid() {
+      return uid_;
+    }
+
+    public static final int EMAIL_FIELD_NUMBER = 2;
+    private volatile java.lang.Object email_;
+    /**
+     * <pre>
+     *邮箱（注册时为必须）
+     * </pre>
+     *
+     * <code>optional string email = 2;</code>
+     * @return Whether the email field is set.
+     */
+    @java.lang.Override
+    public boolean hasEmail() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <pre>
+     *邮箱（注册时为必须）
+     * </pre>
+     *
+     * <code>optional string email = 2;</code>
+     * @return The email.
+     */
+    @java.lang.Override
+    public java.lang.String getEmail() {
+      java.lang.Object ref = email_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        email_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     *邮箱（注册时为必须）
+     * </pre>
+     *
+     * <code>optional string email = 2;</code>
+     * @return The bytes for email.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getEmailBytes() {
+      java.lang.Object ref = email_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        email_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int DEFAULTNICK_FIELD_NUMBER = 3;
+    private volatile java.lang.Object defaultNick_;
+    /**
+     * <pre>
+     *（仅在注册时）默认昵称
+     * </pre>
+     *
+     * <code>optional string defaultNick = 3;</code>
+     * @return Whether the defaultNick field is set.
+     */
+    @java.lang.Override
+    public boolean hasDefaultNick() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <pre>
+     *（仅在注册时）默认昵称
+     * </pre>
+     *
+     * <code>optional string defaultNick = 3;</code>
+     * @return The defaultNick.
+     */
+    @java.lang.Override
+    public java.lang.String getDefaultNick() {
+      java.lang.Object ref = defaultNick_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        defaultNick_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     *（仅在注册时）默认昵称
+     * </pre>
+     *
+     * <code>optional string defaultNick = 3;</code>
+     * @return The bytes for defaultNick.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getDefaultNickBytes() {
+      java.lang.Object ref = defaultNick_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        defaultNick_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int PWD_FIELD_NUMBER = 4;
+    private com.google.protobuf.ByteString pwd_;
+    /**
+     * <pre>
+     *密码
+     * </pre>
+     *
+     * <code>bytes pwd = 4;</code>
+     * @return The pwd.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getPwd() {
+      return pwd_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeInt64(1, uid_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, email_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, defaultNick_);
+      }
+      if (!pwd_.isEmpty()) {
+        output.writeBytes(4, pwd_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(1, uid_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, email_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, defaultNick_);
+      }
+      if (!pwd_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(4, pwd_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof cn.csuosa.chatroomcli.proto.Request.User)) {
+        return super.equals(obj);
+      }
+      cn.csuosa.chatroomcli.proto.Request.User other = (cn.csuosa.chatroomcli.proto.Request.User) obj;
+
+      if (hasUid() != other.hasUid()) return false;
+      if (hasUid()) {
+        if (getUid()
+            != other.getUid()) return false;
+      }
+      if (hasEmail() != other.hasEmail()) return false;
+      if (hasEmail()) {
+        if (!getEmail()
+            .equals(other.getEmail())) return false;
+      }
+      if (hasDefaultNick() != other.hasDefaultNick()) return false;
+      if (hasDefaultNick()) {
+        if (!getDefaultNick()
+            .equals(other.getDefaultNick())) return false;
+      }
+      if (!getPwd()
+          .equals(other.getPwd())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasUid()) {
+        hash = (37 * hash) + UID_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+            getUid());
+      }
+      if (hasEmail()) {
+        hash = (37 * hash) + EMAIL_FIELD_NUMBER;
+        hash = (53 * hash) + getEmail().hashCode();
+      }
+      if (hasDefaultNick()) {
+        hash = (37 * hash) + DEFAULTNICK_FIELD_NUMBER;
+        hash = (53 * hash) + getDefaultNick().hashCode();
+      }
+      hash = (37 * hash) + PWD_FIELD_NUMBER;
+      hash = (53 * hash) + getPwd().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static cn.csuosa.chatroomcli.proto.Request.User parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cn.csuosa.chatroomcli.proto.Request.User parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cn.csuosa.chatroomcli.proto.Request.User parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cn.csuosa.chatroomcli.proto.Request.User parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cn.csuosa.chatroomcli.proto.Request.User parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cn.csuosa.chatroomcli.proto.Request.User parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cn.csuosa.chatroomcli.proto.Request.User parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static cn.csuosa.chatroomcli.proto.Request.User parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static cn.csuosa.chatroomcli.proto.Request.User parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static cn.csuosa.chatroomcli.proto.Request.User parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static cn.csuosa.chatroomcli.proto.Request.User parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static cn.csuosa.chatroomcli.proto.Request.User parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(cn.csuosa.chatroomcli.proto.Request.User prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     *用于注册、登录
+     * </pre>
+     *
+     * Protobuf type {@code cn.csuosa.pojo.request.User}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:cn.csuosa.pojo.request.User)
+        cn.csuosa.chatroomcli.proto.Request.UserOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return cn.csuosa.chatroomcli.proto.Request.internal_static_cn_csuosa_pojo_request_User_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return cn.csuosa.chatroomcli.proto.Request.internal_static_cn_csuosa_pojo_request_User_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                cn.csuosa.chatroomcli.proto.Request.User.class, cn.csuosa.chatroomcli.proto.Request.User.Builder.class);
+      }
+
+      // Construct using cn.csuosa.chatroomcli.proto.Request.User.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        uid_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        email_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        defaultNick_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
+        pwd_ = com.google.protobuf.ByteString.EMPTY;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return cn.csuosa.chatroomcli.proto.Request.internal_static_cn_csuosa_pojo_request_User_descriptor;
+      }
+
+      @java.lang.Override
+      public cn.csuosa.chatroomcli.proto.Request.User getDefaultInstanceForType() {
+        return cn.csuosa.chatroomcli.proto.Request.User.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public cn.csuosa.chatroomcli.proto.Request.User build() {
+        cn.csuosa.chatroomcli.proto.Request.User result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public cn.csuosa.chatroomcli.proto.Request.User buildPartial() {
+        cn.csuosa.chatroomcli.proto.Request.User result = new cn.csuosa.chatroomcli.proto.Request.User(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.uid_ = uid_;
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.email_ = email_;
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.defaultNick_ = defaultNick_;
+        result.pwd_ = pwd_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof cn.csuosa.chatroomcli.proto.Request.User) {
+          return mergeFrom((cn.csuosa.chatroomcli.proto.Request.User)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(cn.csuosa.chatroomcli.proto.Request.User other) {
+        if (other == cn.csuosa.chatroomcli.proto.Request.User.getDefaultInstance()) return this;
+        if (other.hasUid()) {
+          setUid(other.getUid());
+        }
+        if (other.hasEmail()) {
+          bitField0_ |= 0x00000002;
+          email_ = other.email_;
+          onChanged();
+        }
+        if (other.hasDefaultNick()) {
+          bitField0_ |= 0x00000004;
+          defaultNick_ = other.defaultNick_;
+          onChanged();
+        }
+        if (other.getPwd() != com.google.protobuf.ByteString.EMPTY) {
+          setPwd(other.getPwd());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        cn.csuosa.chatroomcli.proto.Request.User parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (cn.csuosa.chatroomcli.proto.Request.User) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private long uid_ ;
+      /**
+       * <pre>
+       *账号
+       * </pre>
+       *
+       * <code>optional int64 uid = 1;</code>
+       * @return Whether the uid field is set.
+       */
+      @java.lang.Override
+      public boolean hasUid() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <pre>
+       *账号
+       * </pre>
+       *
+       * <code>optional int64 uid = 1;</code>
+       * @return The uid.
+       */
+      @java.lang.Override
+      public long getUid() {
+        return uid_;
+      }
+      /**
+       * <pre>
+       *账号
+       * </pre>
+       *
+       * <code>optional int64 uid = 1;</code>
+       * @param value The uid to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUid(long value) {
+        bitField0_ |= 0x00000001;
+        uid_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *账号
+       * </pre>
+       *
+       * <code>optional int64 uid = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUid() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        uid_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object email_ = "";
+      /**
+       * <pre>
+       *邮箱（注册时为必须）
+       * </pre>
+       *
+       * <code>optional string email = 2;</code>
+       * @return Whether the email field is set.
+       */
+      public boolean hasEmail() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <pre>
+       *邮箱（注册时为必须）
+       * </pre>
+       *
+       * <code>optional string email = 2;</code>
+       * @return The email.
+       */
+      public java.lang.String getEmail() {
+        java.lang.Object ref = email_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          email_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       *邮箱（注册时为必须）
+       * </pre>
+       *
+       * <code>optional string email = 2;</code>
+       * @return The bytes for email.
+       */
+      public com.google.protobuf.ByteString
+          getEmailBytes() {
+        java.lang.Object ref = email_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          email_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       *邮箱（注册时为必须）
+       * </pre>
+       *
+       * <code>optional string email = 2;</code>
+       * @param value The email to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEmail(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        email_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *邮箱（注册时为必须）
+       * </pre>
+       *
+       * <code>optional string email = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearEmail() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        email_ = getDefaultInstance().getEmail();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *邮箱（注册时为必须）
+       * </pre>
+       *
+       * <code>optional string email = 2;</code>
+       * @param value The bytes for email to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEmailBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        bitField0_ |= 0x00000002;
+        email_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object defaultNick_ = "";
+      /**
+       * <pre>
+       *（仅在注册时）默认昵称
+       * </pre>
+       *
+       * <code>optional string defaultNick = 3;</code>
+       * @return Whether the defaultNick field is set.
+       */
+      public boolean hasDefaultNick() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <pre>
+       *（仅在注册时）默认昵称
+       * </pre>
+       *
+       * <code>optional string defaultNick = 3;</code>
+       * @return The defaultNick.
+       */
+      public java.lang.String getDefaultNick() {
+        java.lang.Object ref = defaultNick_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          defaultNick_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       *（仅在注册时）默认昵称
+       * </pre>
+       *
+       * <code>optional string defaultNick = 3;</code>
+       * @return The bytes for defaultNick.
+       */
+      public com.google.protobuf.ByteString
+          getDefaultNickBytes() {
+        java.lang.Object ref = defaultNick_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          defaultNick_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       *（仅在注册时）默认昵称
+       * </pre>
+       *
+       * <code>optional string defaultNick = 3;</code>
+       * @param value The defaultNick to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDefaultNick(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        defaultNick_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *（仅在注册时）默认昵称
+       * </pre>
+       *
+       * <code>optional string defaultNick = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDefaultNick() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        defaultNick_ = getDefaultInstance().getDefaultNick();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *（仅在注册时）默认昵称
+       * </pre>
+       *
+       * <code>optional string defaultNick = 3;</code>
+       * @param value The bytes for defaultNick to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDefaultNickBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        bitField0_ |= 0x00000004;
+        defaultNick_ = value;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.ByteString pwd_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       *密码
+       * </pre>
+       *
+       * <code>bytes pwd = 4;</code>
+       * @return The pwd.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getPwd() {
+        return pwd_;
+      }
+      /**
+       * <pre>
+       *密码
+       * </pre>
+       *
+       * <code>bytes pwd = 4;</code>
+       * @param value The pwd to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPwd(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        pwd_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *密码
+       * </pre>
+       *
+       * <code>bytes pwd = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPwd() {
+        
+        pwd_ = getDefaultInstance().getPwd();
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:cn.csuosa.pojo.request.User)
+    }
+
+    // @@protoc_insertion_point(class_scope:cn.csuosa.pojo.request.User)
+    private static final cn.csuosa.chatroomcli.proto.Request.User DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new cn.csuosa.chatroomcli.proto.Request.User();
+    }
+
+    public static cn.csuosa.chatroomcli.proto.Request.User getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<User>
+        PARSER = new com.google.protobuf.AbstractParser<User>() {
+      @java.lang.Override
+      public User parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new User(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<User> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<User> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public cn.csuosa.chatroomcli.proto.Request.User getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1409,6 +2840,10 @@ public final class Request {
         getTicketBytes();
   }
   /**
+   * <pre>
+   *用于加入、退出、创建频道，以及发送消息
+   * </pre>
+   *
    * Protobuf type {@code cn.csuosa.pojo.request.Channel}
    */
   public static final class Channel extends
@@ -1855,6 +3290,10 @@ public final class Request {
       return builder;
     }
     /**
+     * <pre>
+     *用于加入、退出、创建频道，以及发送消息
+     * </pre>
+     *
      * Protobuf type {@code cn.csuosa.pojo.request.Channel}
      */
     public static final class Builder extends
@@ -2425,6 +3864,10 @@ public final class Request {
     com.google.protobuf.ByteString getContent();
   }
   /**
+   * <pre>
+   *用于发送消息
+   * </pre>
+   *
    * Protobuf type {@code cn.csuosa.pojo.request.Message}
    */
   public static final class Message extends
@@ -2741,6 +4184,10 @@ public final class Request {
       return builder;
     }
     /**
+     * <pre>
+     *用于发送消息
+     * </pre>
+     *
      * Protobuf type {@code cn.csuosa.pojo.request.Message}
      */
     public static final class Builder extends
@@ -3089,6 +4536,11 @@ public final class Request {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_cn_csuosa_pojo_request_RequestPOJO_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_cn_csuosa_pojo_request_User_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_cn_csuosa_pojo_request_User_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_cn_csuosa_pojo_request_Channel_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -3108,20 +4560,25 @@ public final class Request {
   static {
     java.lang.String[] descriptorData = {
       "\n\rRequest.proto\022\026cn.csuosa.pojo.request\"" +
-      "\303\002\n\013RequestPOJO\022@\n\toperation\030\001 \001(\0162-.cn." +
+      "\250\003\n\013RequestPOJO\022@\n\toperation\030\001 \001(\0162-.cn." +
       "csuosa.pojo.request.RequestPOJO.Operatio" +
-      "n\0225\n\007message\030\002 \001(\0132\037.cn.csuosa.pojo.requ" +
-      "est.MessageH\000\210\001\001\0225\n\007channel\030\003 \001(\0132\037.cn.c" +
-      "suosa.pojo.request.ChannelH\001\210\001\001\"l\n\tOpera" +
-      "tion\022\n\n\006RETAIN\020\000\022\n\n\006LOGOUT\020\001\022\014\n\010JOIN_CHA" +
-      "\020\002\022\014\n\010QUIT_CHA\020\003\022\016\n\nCREATE_CHA\020\004\022\014\n\010SEND" +
-      "_MSG\020\005\022\r\n\tHEARTBEAT\020\006B\n\n\010_messageB\n\n\010_ch" +
-      "annel\"S\n\007Channel\022\014\n\004name\030\001 \001(\t\022\021\n\004nick\030\002" +
-      " \001(\tH\000\210\001\001\022\023\n\006ticket\030\003 \001(\tH\001\210\001\001B\007\n\005_nickB" +
-      "\t\n\007_ticket\";\n\007Message\022\014\n\004type\030\001 \001(\005\022\021\n\tt" +
-      "imestamp\030\002 \001(\003\022\017\n\007content\030\003 \001(\014B(\n\033cn.cs" +
-      "uosa.chatroomcli.protoB\007RequestH\001b\006proto" +
-      "3"
+      "n\022/\n\004user\030\002 \001(\0132\034.cn.csuosa.pojo.request" +
+      ".UserH\000\210\001\001\0225\n\007channel\030\003 \001(\0132\037.cn.csuosa." +
+      "pojo.request.ChannelH\001\210\001\001\0225\n\007message\030\004 \001" +
+      "(\0132\037.cn.csuosa.pojo.request.MessageH\002\210\001\001" +
+      "\"\226\001\n\tOperation\022\n\n\006RETAIN\020\000\022\014\n\010REGISTER\020\001" +
+      "\022\t\n\005LOGIN\020\002\022\n\n\006LOGOUT\020\003\022\017\n\013UPDATE_INFO\020\004" +
+      "\022\014\n\010JOIN_CHA\020\005\022\014\n\010QUIT_CHA\020\006\022\016\n\nCREATE_C" +
+      "HA\020\007\022\014\n\010SEND_MSG\020\010\022\r\n\tHEARTBEAT\020\tB\007\n\005_us" +
+      "erB\n\n\010_channelB\n\n\010_message\"u\n\004User\022\020\n\003ui" +
+      "d\030\001 \001(\003H\000\210\001\001\022\022\n\005email\030\002 \001(\tH\001\210\001\001\022\030\n\013defa" +
+      "ultNick\030\003 \001(\tH\002\210\001\001\022\013\n\003pwd\030\004 \001(\014B\006\n\004_uidB" +
+      "\010\n\006_emailB\016\n\014_defaultNick\"S\n\007Channel\022\014\n\004" +
+      "name\030\001 \001(\t\022\021\n\004nick\030\002 \001(\tH\000\210\001\001\022\023\n\006ticket\030" +
+      "\003 \001(\tH\001\210\001\001B\007\n\005_nickB\t\n\007_ticket\";\n\007Messag" +
+      "e\022\014\n\004type\030\001 \001(\005\022\021\n\ttimestamp\030\002 \001(\003\022\017\n\007co" +
+      "ntent\030\003 \001(\014B(\n\033cn.csuosa.chatroomcli.pro" +
+      "toB\007RequestH\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -3132,15 +4589,21 @@ public final class Request {
     internal_static_cn_csuosa_pojo_request_RequestPOJO_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cn_csuosa_pojo_request_RequestPOJO_descriptor,
-        new java.lang.String[] { "Operation", "Message", "Channel", "Message", "Channel", });
-    internal_static_cn_csuosa_pojo_request_Channel_descriptor =
+        new java.lang.String[] { "Operation", "User", "Channel", "Message", "User", "Channel", "Message", });
+    internal_static_cn_csuosa_pojo_request_User_descriptor =
       getDescriptor().getMessageTypes().get(1);
+    internal_static_cn_csuosa_pojo_request_User_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_cn_csuosa_pojo_request_User_descriptor,
+        new java.lang.String[] { "Uid", "Email", "DefaultNick", "Pwd", "Uid", "Email", "DefaultNick", });
+    internal_static_cn_csuosa_pojo_request_Channel_descriptor =
+      getDescriptor().getMessageTypes().get(2);
     internal_static_cn_csuosa_pojo_request_Channel_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cn_csuosa_pojo_request_Channel_descriptor,
         new java.lang.String[] { "Name", "Nick", "Ticket", "Nick", "Ticket", });
     internal_static_cn_csuosa_pojo_request_Message_descriptor =
-      getDescriptor().getMessageTypes().get(2);
+      getDescriptor().getMessageTypes().get(3);
     internal_static_cn_csuosa_pojo_request_Message_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cn_csuosa_pojo_request_Message_descriptor,

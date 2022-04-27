@@ -11,7 +11,7 @@ public class MessageLog implements ObservableValue<Vector<Message>>
 {
     private final Vector<InvalidationListener> invalidationListeners = new Vector<>();
     private final Vector<ChangeListener<? super Vector<Message>>> changeListeners = new Vector<>();
-    private final Vector<Message> messages = new Vector<>();
+    private final Vector<Message> messageList = new Vector<>();
 
     public MessageLog()
     {
@@ -45,22 +45,22 @@ public class MessageLog implements ObservableValue<Vector<Message>>
     @Override
     public Vector<Message> getValue()
     {
-        return messages;
+        return messageList;
     }
 
     public void addMessage(Message message)
     {
-        Vector<Message> messages_old = new Vector<>(messages);
-        messages.add(message);
-        changeListeners.forEach(changeListener -> changeListener.changed(this, messages_old, messages));
+        Vector<Message> messages_old = new Vector<>(messageList);
+        messageList.add(message);
+        changeListeners.forEach(changeListener -> changeListener.changed(this, messages_old, messageList));
         invalidationListeners.forEach(invalidationListener -> invalidationListener.invalidated(this));
     }
 
     public void clear()
     {
-        Vector<Message> messages_old = new Vector<>(messages);
-        messages.clear();
-        changeListeners.forEach(changeListener -> changeListener.changed(this, messages_old, messages));
+        Vector<Message> messages_old = new Vector<>(messageList);
+        messageList.clear();
+        changeListeners.forEach(changeListener -> changeListener.changed(this, messages_old, messageList));
         invalidationListeners.forEach(invalidationListener -> invalidationListener.invalidated(this));
     }
 }

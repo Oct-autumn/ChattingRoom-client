@@ -3,28 +3,34 @@ package cn.csuosa.chatroomcli.handlers;
 import cn.csuosa.chatroomcli.Core;
 import cn.csuosa.chatroomcli.GUIBootClass;
 import cn.csuosa.chatroomcli.Main;
-import cn.csuosa.chatroomcli.model.DisplayableChannelInfo;
+import cn.csuosa.chatroomcli.controller.controls.ChannelListItemController;
+import cn.csuosa.chatroomcli.model.Channel;
 import cn.csuosa.chatroomcli.model.Message;
 import cn.csuosa.chatroomcli.proto.Request;
 import cn.csuosa.chatroomcli.proto.Response;
-import cn.csuosa.chatroomcli.sceneController.ConnectSceneController;
+import cn.csuosa.chatroomcli.controller.scene.ConnectSceneController;
 import com.google.protobuf.ByteString;
+import com.sun.javafx.collections.ObservableListWrapper;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.handler.timeout.IdleStateEvent;
-import io.netty.util.AttributeKey;
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.geometry.Rectangle2D;
-import javafx.scene.control.TableView;
+import javafx.scene.Scene;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Screen;
+import javafx.stage.Stage;
 
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class ResponseHandler extends ChannelInboundHandlerAdapter
 {
     /**
      * 心跳包
+     *
      * @param ctx
      * @param evt
      * @throws Exception
@@ -39,7 +45,9 @@ public class ResponseHandler extends ChannelInboundHandlerAdapter
                 //定时发送心跳包
                 case WRITER_IDLE, ALL_IDLE -> Main.socketChannel.writeAndFlush(Request.RequestPOJO.newBuilder()
                         .setOperation(Request.RequestPOJO.Operation.HEARTBEAT).build());
-                case READER_IDLE -> {}
+                case READER_IDLE ->
+                {
+                }
             }
         } else
         {
@@ -52,16 +60,15 @@ public class ResponseHandler extends ChannelInboundHandlerAdapter
     {
         Main.socketChannel = null;
         Core.logoutAction();
-        Platform.runLater(()->{
-            GUIBootClass.getStage().setScene(GUIBootClass.getConnectWindowScene());
-            ConnectSceneController.initialize(GUIBootClass.getStage().getScene());
-            GUIBootClass.getStage().setTitle("IRC-ChatRoom 连接与登录");
-            GUIBootClass.getStage().setResizable(false);
+        Platform.runLater(() -> {
+            Stage connectStage = GUIBootClass.getStage("connectStage");
+            Scene scene = GUIBootClass.getConnectWindowScene();
+            connectStage.show();
+            ConnectSceneController.initializeControls(connectStage.getScene());
             Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
-            GUIBootClass.getStage().setX((screenBounds.getWidth() - GUIBootClass.getConnectWindowScene().getWidth()) / 2);
-            GUIBootClass.getStage().setY((screenBounds.getHeight() - GUIBootClass.getConnectWindowScene().getHeight()) / 2);
-            GUIBootClass.getStage().setMinWidth(GUIBootClass.getConnectWindowScene().getWidth());
-            GUIBootClass.getStage().setMinHeight(GUIBootClass.getConnectWindowScene().getHeight());
+            connectStage.setX((screenBounds.getWidth() - scene.getWidth()) / 2);
+            connectStage.setY((screenBounds.getHeight() - scene.getHeight()) / 2);
+            GUIBootClass.getStage("mainStage").close();
         });
     }
 
@@ -71,23 +78,69 @@ public class ResponseHandler extends ChannelInboundHandlerAdapter
         Response.ResponsePOJO response = (Response.ResponsePOJO) msg;
         switch (response.getType())
         {
-            case RETAIN ->{
+            case RETAIN ->
+            {
             }
-            case RESULT ->{
+            case RESULT ->
+            {
                 if (response.getResult().getStCode() != 0)
-                    System.out.println("Error: StCode-" + response.getResult().getStCode() + " | " + response.getResult().getMsg());
+                    Main.consoleLog.addMessage(new Message(new Date().getTime(), "", "", Message.MessageType.PLAIN_TEXT, response.getResult().getMsgBytes()));
             }
-            case PUSH_MSG -> {}
-            case PUSH_CHA_LIST -> {
+            case PUSH_MSG ->
+            {
+                Response.Message it = response.getMessage();
+                Core.channelMap.get(it.getChannel()).getMessageLog()
+                        .addMessage(new Message(
+                                it.getTimestamp(),
+                                it.getChannel(),
+                                it.getFromNick(),
+                                Message.MessageType.values()[it.getType()],
+                                it.getContent()
+                        ));
+            }
+            case PUSH_CHA_LIST ->
+            {
                 Main.consoleLog.addMessage(new Message(new Date().getTime(), "", "", Message.MessageType.PLAIN_TEXT, ByteString.copyFrom("Update channel list".getBytes(StandardCharsets.UTF_8))));
-                Core.channelInfoList.clear();
-                response.getChannelInfoList().forEach(channelInfo -> Core.channelInfoList.add(new DisplayableChannelInfo(channelInfo.getName(), channelInfo.getMemberNum(), !channelInfo.getIsPublic(), channelInfo.getIsIN())));
-                Platform.runLater(()-> ((TableView<DisplayableChannelInfo>)GUIBootClass.getTalkWindowScene().lookup("#tableChannelList")).setItems(Core.channelInfoList));
+                ObservableList<ChannelListItemController> listItems = new ObservableListWrapper<>(new ArrayList<>());
+                response.getChannelInfoList().forEach(channelInfo -> {
+                    if (!Core.channelMap.containsKey(channelInfo.getName()))
+                        Core.channelMap.put(channelInfo.getName(), new Channel(channelInfo.getName(), channelInfo.getMemberNum(), channelInfo.getIsPublic(), channelInfo.getIsIN(), null, null));
+                    else
+                    {
+                        Channel thisChannel = Core.channelMap.get(channelInfo.getName());
+                        thisChannel.setOnlineMember(channelInfo.getMemberNum());
+                        thisChannel.setJoined(channelInfo.getIsIN());
+                    }
+                    System.out.printf("%s %d %s %s%n", channelInfo.getName(), channelInfo.getMemberNum(), channelInfo.getIsPublic() ? "Public" : "Verification", channelInfo.getIsIN() ? "<joined>" : "<not joined>");
+                    listItems.add(new ChannelListItemController(channelInfo.getName(), channelInfo.getMemberNum(), channelInfo.getIsPublic(), channelInfo.getIsIN()));
+                });
+                Platform.runLater(() -> {
+                    GridPane gridPaneChannelList = (GridPane) GUIBootClass.getMainWindowScene().lookup("#gridPaneChannelList");
+                    int i = 0;
+                    gridPaneChannelList.getChildren().clear();
+                    gridPaneChannelList.getRowConstraints().clear();
+                    for (ChannelListItemController item : listItems)
+                    {
+                        gridPaneChannelList.addRow(i, item);
+                        i++;
+                    }
+                });
             }
-            case PUSH_MEMBER_LIST -> {}
-            case PUSH_SYS_INFO -> {}
-            case UNRECOGNIZED -> {}
-            default -> {}
+            case PUSH_LOGIN_USER_LIST ->
+            {
+            }
+            case PUSH_CHA_MEMBER_LIST ->
+            {
+            }
+            case PUSH_SYS_INFO ->
+            {
+            }
+            case UNRECOGNIZED ->
+            {
+            }
+            default ->
+            {
+            }
         }
     }
 }

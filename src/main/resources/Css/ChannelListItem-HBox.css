@@ -1,0 +1,76 @@
+.text-channel-name-normal {
+    -fx-font-family: Arial, "华文细黑";
+    -fx-text-fill: #444444;
+    -fx-font-size: 20px;
+}
+
+.text-channel-name-joined {
+    -fx-font-family: Arial, "华文细黑";
+    -fx-text-fill: #000000;
+    -fx-font-size: 20px;
+}
+
+.text-channel-info-normal {
+    -fx-font-family: Arial, "华文细黑";
+    -fx-text-fill: #444444;
+    -fx-font-size: 14px;
+}
+
+.text-channel-info-joined {
+    -fx-font-family: Arial, "华文细黑";
+    -fx-text-fill: #000000;
+    -fx-font-size: 14px;
+}
+
+.h-box-channel-list-item-normal {
+    -fx-border-color: GRAY;
+    -fx-border-radius: 5px;
+    -fx-background-color: #EEEEEE;
+    -fx-background-radius: 5px;
+}
+
+.h-box-channel-list-item-mouse-on {
+    -fx-border-color: GRAY;
+    -fx-border-radius: 5px;
+    -fx-background-color: #EEEEEE;
+    -fx-background-radius: 5px;
+    -fx-effect: dropshadow(two-pass-box, #66ccff, 3, 5, 0, 0);
+}
+
+.button-channel-operation-base {
+    -fx-min-height: 30px;
+    -fx-min-width: 40px;
+    -fx-pref-height: 30px;
+    -fx-pref-width: 40px;
+    -fx-max-height: 30px;
+    -fx-max-width: 40px;
+    -fx-font-family: Arial, "华文细黑";
+    -fx-text-fill: #000000;
+    -fx-font-size: 12px;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
+
+.button-channel-operation-normal {
+    -fx-background-color: #DDDDDD;
+    -fx-background-radius: 2px;
+    -fx-border-color: GRAY;
+    -fx-border-radius: 2px;
+    -fx-alignment: center;
+}
+
+.button-channel-operation-mouse-on {
+    -fx-background-color: #DDDDDD;
+    -fx-background-radius: 2px;
+    -fx-border-color: GRAY;
+    -fx-border-radius: 2px;
+    -fx-effect: dropshadow(two-pass-box, #66ccff, 3, 5, 0, 0);
+}
+
+.button-channel-operation-mouse-pressed {
+    -fx-background-color: #b0b0b0;
+    -fx-background-radius: 2px;
+    -fx-border-color: GRAY;
+    -fx-border-radius: 2px;
+    -fx-effect: dropshadow(two-pass-box, #4b97bd, 3, 5, 0, 0);
+}

@@ -1,11 +1,14 @@
 package cn.csuosa.chatroomcli;
 
 import cn.csuosa.chatroomcli.common.MessageLog;
+import cn.csuosa.chatroomcli.common.SocketWaitingReplyEvent;
 import cn.csuosa.chatroomcli.config.Configuration;
 import cn.csuosa.chatroomcli.proto.Request;
 import io.netty.channel.Channel;
 
 import java.util.Vector;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class Main
 {
@@ -13,6 +16,7 @@ public class Main
     public static final SocketClient socketClient = new SocketClient();
     public static Channel socketChannel = null;
     public static final MessageLog consoleLog = new MessageLog();
+    public static final BlockingQueue<SocketWaitingReplyEvent> waitingQueue = new LinkedBlockingQueue<>();
 
     public static void main(String[] args)
     {
