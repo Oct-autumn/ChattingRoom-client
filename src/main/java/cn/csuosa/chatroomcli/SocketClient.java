@@ -45,19 +45,18 @@ public class SocketClient
      * @param port 连接目标port
      * @param buttonConnect 连接按钮
      */
-    public void newConnect(String url, int port, Button buttonConnect)
+    public void newConnect(String url, int port)
     {
         new Thread()
         {
             @Override
             public void run()
             {
-
                 ChannelFuture channelFuture = bootstrap.connect(url, port);
                 channelFuture.awaitUninterruptibly();
                 if (channelFuture.isSuccess())
                     Main.socketChannel = channelFuture.channel();
-                buttonConnect.setDisable(false);
+                Main.waitingQueue.newEvent(null, "Socket");
                 try
                 {
                     channelFuture.channel().closeFuture().sync();
@@ -65,6 +64,7 @@ public class SocketClient
                 {
                     e.printStackTrace();
                 }
+                Main.waitingQueue.newEvent(null, "Socket");
                 super.run();
             }
         }.start();

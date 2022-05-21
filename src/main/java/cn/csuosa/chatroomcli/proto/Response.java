@@ -84,27 +84,27 @@ public final class Response {
         int index);
 
     /**
-     * <code>repeated .cn.csuosa.pojo.response.LoginUserInfo memberInfo = 5;</code>
+     * <code>repeated .cn.csuosa.pojo.response.UserInfo userInfo = 5;</code>
      */
-    java.util.List<cn.csuosa.chatroomcli.proto.Response.LoginUserInfo> 
-        getMemberInfoList();
+    java.util.List<cn.csuosa.chatroomcli.proto.Response.UserInfo> 
+        getUserInfoList();
     /**
-     * <code>repeated .cn.csuosa.pojo.response.LoginUserInfo memberInfo = 5;</code>
+     * <code>repeated .cn.csuosa.pojo.response.UserInfo userInfo = 5;</code>
      */
-    cn.csuosa.chatroomcli.proto.Response.LoginUserInfo getMemberInfo(int index);
+    cn.csuosa.chatroomcli.proto.Response.UserInfo getUserInfo(int index);
     /**
-     * <code>repeated .cn.csuosa.pojo.response.LoginUserInfo memberInfo = 5;</code>
+     * <code>repeated .cn.csuosa.pojo.response.UserInfo userInfo = 5;</code>
      */
-    int getMemberInfoCount();
+    int getUserInfoCount();
     /**
-     * <code>repeated .cn.csuosa.pojo.response.LoginUserInfo memberInfo = 5;</code>
+     * <code>repeated .cn.csuosa.pojo.response.UserInfo userInfo = 5;</code>
      */
-    java.util.List<? extends cn.csuosa.chatroomcli.proto.Response.LoginUserInfoOrBuilder> 
-        getMemberInfoOrBuilderList();
+    java.util.List<? extends cn.csuosa.chatroomcli.proto.Response.UserInfoOrBuilder> 
+        getUserInfoOrBuilderList();
     /**
-     * <code>repeated .cn.csuosa.pojo.response.LoginUserInfo memberInfo = 5;</code>
+     * <code>repeated .cn.csuosa.pojo.response.UserInfo userInfo = 5;</code>
      */
-    cn.csuosa.chatroomcli.proto.Response.LoginUserInfoOrBuilder getMemberInfoOrBuilder(
+    cn.csuosa.chatroomcli.proto.Response.UserInfoOrBuilder getUserInfoOrBuilder(
         int index);
   }
   /**
@@ -122,7 +122,7 @@ public final class Response {
     private ResponsePOJO() {
       type_ = 0;
       channelInfo_ = java.util.Collections.emptyList();
-      memberInfo_ = java.util.Collections.emptyList();
+      userInfo_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -199,11 +199,11 @@ public final class Response {
             }
             case 42: {
               if (!((mutable_bitField0_ & 0x00000008) != 0)) {
-                memberInfo_ = new java.util.ArrayList<cn.csuosa.chatroomcli.proto.Response.LoginUserInfo>();
+                userInfo_ = new java.util.ArrayList<cn.csuosa.chatroomcli.proto.Response.UserInfo>();
                 mutable_bitField0_ |= 0x00000008;
               }
-              memberInfo_.add(
-                  input.readMessage(cn.csuosa.chatroomcli.proto.Response.LoginUserInfo.parser(), extensionRegistry));
+              userInfo_.add(
+                  input.readMessage(cn.csuosa.chatroomcli.proto.Response.UserInfo.parser(), extensionRegistry));
               break;
             }
             default: {
@@ -225,7 +225,7 @@ public final class Response {
           channelInfo_ = java.util.Collections.unmodifiableList(channelInfo_);
         }
         if (((mutable_bitField0_ & 0x00000008) != 0)) {
-          memberInfo_ = java.util.Collections.unmodifiableList(memberInfo_);
+          userInfo_ = java.util.Collections.unmodifiableList(userInfo_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -565,44 +565,44 @@ public final class Response {
       return channelInfo_.get(index);
     }
 
-    public static final int MEMBERINFO_FIELD_NUMBER = 5;
-    private java.util.List<cn.csuosa.chatroomcli.proto.Response.LoginUserInfo> memberInfo_;
+    public static final int USERINFO_FIELD_NUMBER = 5;
+    private java.util.List<cn.csuosa.chatroomcli.proto.Response.UserInfo> userInfo_;
     /**
-     * <code>repeated .cn.csuosa.pojo.response.LoginUserInfo memberInfo = 5;</code>
+     * <code>repeated .cn.csuosa.pojo.response.UserInfo userInfo = 5;</code>
      */
     @java.lang.Override
-    public java.util.List<cn.csuosa.chatroomcli.proto.Response.LoginUserInfo> getMemberInfoList() {
-      return memberInfo_;
+    public java.util.List<cn.csuosa.chatroomcli.proto.Response.UserInfo> getUserInfoList() {
+      return userInfo_;
     }
     /**
-     * <code>repeated .cn.csuosa.pojo.response.LoginUserInfo memberInfo = 5;</code>
+     * <code>repeated .cn.csuosa.pojo.response.UserInfo userInfo = 5;</code>
      */
     @java.lang.Override
-    public java.util.List<? extends cn.csuosa.chatroomcli.proto.Response.LoginUserInfoOrBuilder> 
-        getMemberInfoOrBuilderList() {
-      return memberInfo_;
+    public java.util.List<? extends cn.csuosa.chatroomcli.proto.Response.UserInfoOrBuilder> 
+        getUserInfoOrBuilderList() {
+      return userInfo_;
     }
     /**
-     * <code>repeated .cn.csuosa.pojo.response.LoginUserInfo memberInfo = 5;</code>
+     * <code>repeated .cn.csuosa.pojo.response.UserInfo userInfo = 5;</code>
      */
     @java.lang.Override
-    public int getMemberInfoCount() {
-      return memberInfo_.size();
+    public int getUserInfoCount() {
+      return userInfo_.size();
     }
     /**
-     * <code>repeated .cn.csuosa.pojo.response.LoginUserInfo memberInfo = 5;</code>
+     * <code>repeated .cn.csuosa.pojo.response.UserInfo userInfo = 5;</code>
      */
     @java.lang.Override
-    public cn.csuosa.chatroomcli.proto.Response.LoginUserInfo getMemberInfo(int index) {
-      return memberInfo_.get(index);
+    public cn.csuosa.chatroomcli.proto.Response.UserInfo getUserInfo(int index) {
+      return userInfo_.get(index);
     }
     /**
-     * <code>repeated .cn.csuosa.pojo.response.LoginUserInfo memberInfo = 5;</code>
+     * <code>repeated .cn.csuosa.pojo.response.UserInfo userInfo = 5;</code>
      */
     @java.lang.Override
-    public cn.csuosa.chatroomcli.proto.Response.LoginUserInfoOrBuilder getMemberInfoOrBuilder(
+    public cn.csuosa.chatroomcli.proto.Response.UserInfoOrBuilder getUserInfoOrBuilder(
         int index) {
-      return memberInfo_.get(index);
+      return userInfo_.get(index);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -631,8 +631,8 @@ public final class Response {
       for (int i = 0; i < channelInfo_.size(); i++) {
         output.writeMessage(4, channelInfo_.get(i));
       }
-      for (int i = 0; i < memberInfo_.size(); i++) {
-        output.writeMessage(5, memberInfo_.get(i));
+      for (int i = 0; i < userInfo_.size(); i++) {
+        output.writeMessage(5, userInfo_.get(i));
       }
       unknownFields.writeTo(output);
     }
@@ -659,9 +659,9 @@ public final class Response {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(4, channelInfo_.get(i));
       }
-      for (int i = 0; i < memberInfo_.size(); i++) {
+      for (int i = 0; i < userInfo_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, memberInfo_.get(i));
+          .computeMessageSize(5, userInfo_.get(i));
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -691,8 +691,8 @@ public final class Response {
       }
       if (!getChannelInfoList()
           .equals(other.getChannelInfoList())) return false;
-      if (!getMemberInfoList()
-          .equals(other.getMemberInfoList())) return false;
+      if (!getUserInfoList()
+          .equals(other.getUserInfoList())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -718,9 +718,9 @@ public final class Response {
         hash = (37 * hash) + CHANNELINFO_FIELD_NUMBER;
         hash = (53 * hash) + getChannelInfoList().hashCode();
       }
-      if (getMemberInfoCount() > 0) {
-        hash = (37 * hash) + MEMBERINFO_FIELD_NUMBER;
-        hash = (53 * hash) + getMemberInfoList().hashCode();
+      if (getUserInfoCount() > 0) {
+        hash = (37 * hash) + USERINFO_FIELD_NUMBER;
+        hash = (53 * hash) + getUserInfoList().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -853,7 +853,7 @@ public final class Response {
           getResultFieldBuilder();
           getMessageFieldBuilder();
           getChannelInfoFieldBuilder();
-          getMemberInfoFieldBuilder();
+          getUserInfoFieldBuilder();
         }
       }
       @java.lang.Override
@@ -879,11 +879,11 @@ public final class Response {
         } else {
           channelInfoBuilder_.clear();
         }
-        if (memberInfoBuilder_ == null) {
-          memberInfo_ = java.util.Collections.emptyList();
+        if (userInfoBuilder_ == null) {
+          userInfo_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000008);
         } else {
-          memberInfoBuilder_.clear();
+          userInfoBuilder_.clear();
         }
         return this;
       }
@@ -939,14 +939,14 @@ public final class Response {
         } else {
           result.channelInfo_ = channelInfoBuilder_.build();
         }
-        if (memberInfoBuilder_ == null) {
+        if (userInfoBuilder_ == null) {
           if (((bitField0_ & 0x00000008) != 0)) {
-            memberInfo_ = java.util.Collections.unmodifiableList(memberInfo_);
+            userInfo_ = java.util.Collections.unmodifiableList(userInfo_);
             bitField0_ = (bitField0_ & ~0x00000008);
           }
-          result.memberInfo_ = memberInfo_;
+          result.userInfo_ = userInfo_;
         } else {
-          result.memberInfo_ = memberInfoBuilder_.build();
+          result.userInfo_ = userInfoBuilder_.build();
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -1032,29 +1032,29 @@ public final class Response {
             }
           }
         }
-        if (memberInfoBuilder_ == null) {
-          if (!other.memberInfo_.isEmpty()) {
-            if (memberInfo_.isEmpty()) {
-              memberInfo_ = other.memberInfo_;
+        if (userInfoBuilder_ == null) {
+          if (!other.userInfo_.isEmpty()) {
+            if (userInfo_.isEmpty()) {
+              userInfo_ = other.userInfo_;
               bitField0_ = (bitField0_ & ~0x00000008);
             } else {
-              ensureMemberInfoIsMutable();
-              memberInfo_.addAll(other.memberInfo_);
+              ensureUserInfoIsMutable();
+              userInfo_.addAll(other.userInfo_);
             }
             onChanged();
           }
         } else {
-          if (!other.memberInfo_.isEmpty()) {
-            if (memberInfoBuilder_.isEmpty()) {
-              memberInfoBuilder_.dispose();
-              memberInfoBuilder_ = null;
-              memberInfo_ = other.memberInfo_;
+          if (!other.userInfo_.isEmpty()) {
+            if (userInfoBuilder_.isEmpty()) {
+              userInfoBuilder_.dispose();
+              userInfoBuilder_ = null;
+              userInfo_ = other.userInfo_;
               bitField0_ = (bitField0_ & ~0x00000008);
-              memberInfoBuilder_ = 
+              userInfoBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getMemberInfoFieldBuilder() : null;
+                   getUserInfoFieldBuilder() : null;
             } else {
-              memberInfoBuilder_.addAllMessages(other.memberInfo_);
+              userInfoBuilder_.addAllMessages(other.userInfo_);
             }
           }
         }
@@ -1622,244 +1622,244 @@ public final class Response {
         return channelInfoBuilder_;
       }
 
-      private java.util.List<cn.csuosa.chatroomcli.proto.Response.LoginUserInfo> memberInfo_ =
+      private java.util.List<cn.csuosa.chatroomcli.proto.Response.UserInfo> userInfo_ =
         java.util.Collections.emptyList();
-      private void ensureMemberInfoIsMutable() {
+      private void ensureUserInfoIsMutable() {
         if (!((bitField0_ & 0x00000008) != 0)) {
-          memberInfo_ = new java.util.ArrayList<cn.csuosa.chatroomcli.proto.Response.LoginUserInfo>(memberInfo_);
+          userInfo_ = new java.util.ArrayList<cn.csuosa.chatroomcli.proto.Response.UserInfo>(userInfo_);
           bitField0_ |= 0x00000008;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          cn.csuosa.chatroomcli.proto.Response.LoginUserInfo, cn.csuosa.chatroomcli.proto.Response.LoginUserInfo.Builder, cn.csuosa.chatroomcli.proto.Response.LoginUserInfoOrBuilder> memberInfoBuilder_;
+          cn.csuosa.chatroomcli.proto.Response.UserInfo, cn.csuosa.chatroomcli.proto.Response.UserInfo.Builder, cn.csuosa.chatroomcli.proto.Response.UserInfoOrBuilder> userInfoBuilder_;
 
       /**
-       * <code>repeated .cn.csuosa.pojo.response.LoginUserInfo memberInfo = 5;</code>
+       * <code>repeated .cn.csuosa.pojo.response.UserInfo userInfo = 5;</code>
        */
-      public java.util.List<cn.csuosa.chatroomcli.proto.Response.LoginUserInfo> getMemberInfoList() {
-        if (memberInfoBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(memberInfo_);
+      public java.util.List<cn.csuosa.chatroomcli.proto.Response.UserInfo> getUserInfoList() {
+        if (userInfoBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(userInfo_);
         } else {
-          return memberInfoBuilder_.getMessageList();
+          return userInfoBuilder_.getMessageList();
         }
       }
       /**
-       * <code>repeated .cn.csuosa.pojo.response.LoginUserInfo memberInfo = 5;</code>
+       * <code>repeated .cn.csuosa.pojo.response.UserInfo userInfo = 5;</code>
        */
-      public int getMemberInfoCount() {
-        if (memberInfoBuilder_ == null) {
-          return memberInfo_.size();
+      public int getUserInfoCount() {
+        if (userInfoBuilder_ == null) {
+          return userInfo_.size();
         } else {
-          return memberInfoBuilder_.getCount();
+          return userInfoBuilder_.getCount();
         }
       }
       /**
-       * <code>repeated .cn.csuosa.pojo.response.LoginUserInfo memberInfo = 5;</code>
+       * <code>repeated .cn.csuosa.pojo.response.UserInfo userInfo = 5;</code>
        */
-      public cn.csuosa.chatroomcli.proto.Response.LoginUserInfo getMemberInfo(int index) {
-        if (memberInfoBuilder_ == null) {
-          return memberInfo_.get(index);
+      public cn.csuosa.chatroomcli.proto.Response.UserInfo getUserInfo(int index) {
+        if (userInfoBuilder_ == null) {
+          return userInfo_.get(index);
         } else {
-          return memberInfoBuilder_.getMessage(index);
+          return userInfoBuilder_.getMessage(index);
         }
       }
       /**
-       * <code>repeated .cn.csuosa.pojo.response.LoginUserInfo memberInfo = 5;</code>
+       * <code>repeated .cn.csuosa.pojo.response.UserInfo userInfo = 5;</code>
        */
-      public Builder setMemberInfo(
-          int index, cn.csuosa.chatroomcli.proto.Response.LoginUserInfo value) {
-        if (memberInfoBuilder_ == null) {
+      public Builder setUserInfo(
+          int index, cn.csuosa.chatroomcli.proto.Response.UserInfo value) {
+        if (userInfoBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureMemberInfoIsMutable();
-          memberInfo_.set(index, value);
+          ensureUserInfoIsMutable();
+          userInfo_.set(index, value);
           onChanged();
         } else {
-          memberInfoBuilder_.setMessage(index, value);
+          userInfoBuilder_.setMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .cn.csuosa.pojo.response.LoginUserInfo memberInfo = 5;</code>
+       * <code>repeated .cn.csuosa.pojo.response.UserInfo userInfo = 5;</code>
        */
-      public Builder setMemberInfo(
-          int index, cn.csuosa.chatroomcli.proto.Response.LoginUserInfo.Builder builderForValue) {
-        if (memberInfoBuilder_ == null) {
-          ensureMemberInfoIsMutable();
-          memberInfo_.set(index, builderForValue.build());
+      public Builder setUserInfo(
+          int index, cn.csuosa.chatroomcli.proto.Response.UserInfo.Builder builderForValue) {
+        if (userInfoBuilder_ == null) {
+          ensureUserInfoIsMutable();
+          userInfo_.set(index, builderForValue.build());
           onChanged();
         } else {
-          memberInfoBuilder_.setMessage(index, builderForValue.build());
+          userInfoBuilder_.setMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .cn.csuosa.pojo.response.LoginUserInfo memberInfo = 5;</code>
+       * <code>repeated .cn.csuosa.pojo.response.UserInfo userInfo = 5;</code>
        */
-      public Builder addMemberInfo(cn.csuosa.chatroomcli.proto.Response.LoginUserInfo value) {
-        if (memberInfoBuilder_ == null) {
+      public Builder addUserInfo(cn.csuosa.chatroomcli.proto.Response.UserInfo value) {
+        if (userInfoBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureMemberInfoIsMutable();
-          memberInfo_.add(value);
+          ensureUserInfoIsMutable();
+          userInfo_.add(value);
           onChanged();
         } else {
-          memberInfoBuilder_.addMessage(value);
+          userInfoBuilder_.addMessage(value);
         }
         return this;
       }
       /**
-       * <code>repeated .cn.csuosa.pojo.response.LoginUserInfo memberInfo = 5;</code>
+       * <code>repeated .cn.csuosa.pojo.response.UserInfo userInfo = 5;</code>
        */
-      public Builder addMemberInfo(
-          int index, cn.csuosa.chatroomcli.proto.Response.LoginUserInfo value) {
-        if (memberInfoBuilder_ == null) {
+      public Builder addUserInfo(
+          int index, cn.csuosa.chatroomcli.proto.Response.UserInfo value) {
+        if (userInfoBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureMemberInfoIsMutable();
-          memberInfo_.add(index, value);
+          ensureUserInfoIsMutable();
+          userInfo_.add(index, value);
           onChanged();
         } else {
-          memberInfoBuilder_.addMessage(index, value);
+          userInfoBuilder_.addMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .cn.csuosa.pojo.response.LoginUserInfo memberInfo = 5;</code>
+       * <code>repeated .cn.csuosa.pojo.response.UserInfo userInfo = 5;</code>
        */
-      public Builder addMemberInfo(
-          cn.csuosa.chatroomcli.proto.Response.LoginUserInfo.Builder builderForValue) {
-        if (memberInfoBuilder_ == null) {
-          ensureMemberInfoIsMutable();
-          memberInfo_.add(builderForValue.build());
+      public Builder addUserInfo(
+          cn.csuosa.chatroomcli.proto.Response.UserInfo.Builder builderForValue) {
+        if (userInfoBuilder_ == null) {
+          ensureUserInfoIsMutable();
+          userInfo_.add(builderForValue.build());
           onChanged();
         } else {
-          memberInfoBuilder_.addMessage(builderForValue.build());
+          userInfoBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .cn.csuosa.pojo.response.LoginUserInfo memberInfo = 5;</code>
+       * <code>repeated .cn.csuosa.pojo.response.UserInfo userInfo = 5;</code>
        */
-      public Builder addMemberInfo(
-          int index, cn.csuosa.chatroomcli.proto.Response.LoginUserInfo.Builder builderForValue) {
-        if (memberInfoBuilder_ == null) {
-          ensureMemberInfoIsMutable();
-          memberInfo_.add(index, builderForValue.build());
+      public Builder addUserInfo(
+          int index, cn.csuosa.chatroomcli.proto.Response.UserInfo.Builder builderForValue) {
+        if (userInfoBuilder_ == null) {
+          ensureUserInfoIsMutable();
+          userInfo_.add(index, builderForValue.build());
           onChanged();
         } else {
-          memberInfoBuilder_.addMessage(index, builderForValue.build());
+          userInfoBuilder_.addMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .cn.csuosa.pojo.response.LoginUserInfo memberInfo = 5;</code>
+       * <code>repeated .cn.csuosa.pojo.response.UserInfo userInfo = 5;</code>
        */
-      public Builder addAllMemberInfo(
-          java.lang.Iterable<? extends cn.csuosa.chatroomcli.proto.Response.LoginUserInfo> values) {
-        if (memberInfoBuilder_ == null) {
-          ensureMemberInfoIsMutable();
+      public Builder addAllUserInfo(
+          java.lang.Iterable<? extends cn.csuosa.chatroomcli.proto.Response.UserInfo> values) {
+        if (userInfoBuilder_ == null) {
+          ensureUserInfoIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, memberInfo_);
+              values, userInfo_);
           onChanged();
         } else {
-          memberInfoBuilder_.addAllMessages(values);
+          userInfoBuilder_.addAllMessages(values);
         }
         return this;
       }
       /**
-       * <code>repeated .cn.csuosa.pojo.response.LoginUserInfo memberInfo = 5;</code>
+       * <code>repeated .cn.csuosa.pojo.response.UserInfo userInfo = 5;</code>
        */
-      public Builder clearMemberInfo() {
-        if (memberInfoBuilder_ == null) {
-          memberInfo_ = java.util.Collections.emptyList();
+      public Builder clearUserInfo() {
+        if (userInfoBuilder_ == null) {
+          userInfo_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000008);
           onChanged();
         } else {
-          memberInfoBuilder_.clear();
+          userInfoBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>repeated .cn.csuosa.pojo.response.LoginUserInfo memberInfo = 5;</code>
+       * <code>repeated .cn.csuosa.pojo.response.UserInfo userInfo = 5;</code>
        */
-      public Builder removeMemberInfo(int index) {
-        if (memberInfoBuilder_ == null) {
-          ensureMemberInfoIsMutable();
-          memberInfo_.remove(index);
+      public Builder removeUserInfo(int index) {
+        if (userInfoBuilder_ == null) {
+          ensureUserInfoIsMutable();
+          userInfo_.remove(index);
           onChanged();
         } else {
-          memberInfoBuilder_.remove(index);
+          userInfoBuilder_.remove(index);
         }
         return this;
       }
       /**
-       * <code>repeated .cn.csuosa.pojo.response.LoginUserInfo memberInfo = 5;</code>
+       * <code>repeated .cn.csuosa.pojo.response.UserInfo userInfo = 5;</code>
        */
-      public cn.csuosa.chatroomcli.proto.Response.LoginUserInfo.Builder getMemberInfoBuilder(
+      public cn.csuosa.chatroomcli.proto.Response.UserInfo.Builder getUserInfoBuilder(
           int index) {
-        return getMemberInfoFieldBuilder().getBuilder(index);
+        return getUserInfoFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .cn.csuosa.pojo.response.LoginUserInfo memberInfo = 5;</code>
+       * <code>repeated .cn.csuosa.pojo.response.UserInfo userInfo = 5;</code>
        */
-      public cn.csuosa.chatroomcli.proto.Response.LoginUserInfoOrBuilder getMemberInfoOrBuilder(
+      public cn.csuosa.chatroomcli.proto.Response.UserInfoOrBuilder getUserInfoOrBuilder(
           int index) {
-        if (memberInfoBuilder_ == null) {
-          return memberInfo_.get(index);  } else {
-          return memberInfoBuilder_.getMessageOrBuilder(index);
+        if (userInfoBuilder_ == null) {
+          return userInfo_.get(index);  } else {
+          return userInfoBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>repeated .cn.csuosa.pojo.response.LoginUserInfo memberInfo = 5;</code>
+       * <code>repeated .cn.csuosa.pojo.response.UserInfo userInfo = 5;</code>
        */
-      public java.util.List<? extends cn.csuosa.chatroomcli.proto.Response.LoginUserInfoOrBuilder> 
-           getMemberInfoOrBuilderList() {
-        if (memberInfoBuilder_ != null) {
-          return memberInfoBuilder_.getMessageOrBuilderList();
+      public java.util.List<? extends cn.csuosa.chatroomcli.proto.Response.UserInfoOrBuilder> 
+           getUserInfoOrBuilderList() {
+        if (userInfoBuilder_ != null) {
+          return userInfoBuilder_.getMessageOrBuilderList();
         } else {
-          return java.util.Collections.unmodifiableList(memberInfo_);
+          return java.util.Collections.unmodifiableList(userInfo_);
         }
       }
       /**
-       * <code>repeated .cn.csuosa.pojo.response.LoginUserInfo memberInfo = 5;</code>
+       * <code>repeated .cn.csuosa.pojo.response.UserInfo userInfo = 5;</code>
        */
-      public cn.csuosa.chatroomcli.proto.Response.LoginUserInfo.Builder addMemberInfoBuilder() {
-        return getMemberInfoFieldBuilder().addBuilder(
-            cn.csuosa.chatroomcli.proto.Response.LoginUserInfo.getDefaultInstance());
+      public cn.csuosa.chatroomcli.proto.Response.UserInfo.Builder addUserInfoBuilder() {
+        return getUserInfoFieldBuilder().addBuilder(
+            cn.csuosa.chatroomcli.proto.Response.UserInfo.getDefaultInstance());
       }
       /**
-       * <code>repeated .cn.csuosa.pojo.response.LoginUserInfo memberInfo = 5;</code>
+       * <code>repeated .cn.csuosa.pojo.response.UserInfo userInfo = 5;</code>
        */
-      public cn.csuosa.chatroomcli.proto.Response.LoginUserInfo.Builder addMemberInfoBuilder(
+      public cn.csuosa.chatroomcli.proto.Response.UserInfo.Builder addUserInfoBuilder(
           int index) {
-        return getMemberInfoFieldBuilder().addBuilder(
-            index, cn.csuosa.chatroomcli.proto.Response.LoginUserInfo.getDefaultInstance());
+        return getUserInfoFieldBuilder().addBuilder(
+            index, cn.csuosa.chatroomcli.proto.Response.UserInfo.getDefaultInstance());
       }
       /**
-       * <code>repeated .cn.csuosa.pojo.response.LoginUserInfo memberInfo = 5;</code>
+       * <code>repeated .cn.csuosa.pojo.response.UserInfo userInfo = 5;</code>
        */
-      public java.util.List<cn.csuosa.chatroomcli.proto.Response.LoginUserInfo.Builder> 
-           getMemberInfoBuilderList() {
-        return getMemberInfoFieldBuilder().getBuilderList();
+      public java.util.List<cn.csuosa.chatroomcli.proto.Response.UserInfo.Builder> 
+           getUserInfoBuilderList() {
+        return getUserInfoFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          cn.csuosa.chatroomcli.proto.Response.LoginUserInfo, cn.csuosa.chatroomcli.proto.Response.LoginUserInfo.Builder, cn.csuosa.chatroomcli.proto.Response.LoginUserInfoOrBuilder> 
-          getMemberInfoFieldBuilder() {
-        if (memberInfoBuilder_ == null) {
-          memberInfoBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              cn.csuosa.chatroomcli.proto.Response.LoginUserInfo, cn.csuosa.chatroomcli.proto.Response.LoginUserInfo.Builder, cn.csuosa.chatroomcli.proto.Response.LoginUserInfoOrBuilder>(
-                  memberInfo_,
+          cn.csuosa.chatroomcli.proto.Response.UserInfo, cn.csuosa.chatroomcli.proto.Response.UserInfo.Builder, cn.csuosa.chatroomcli.proto.Response.UserInfoOrBuilder> 
+          getUserInfoFieldBuilder() {
+        if (userInfoBuilder_ == null) {
+          userInfoBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              cn.csuosa.chatroomcli.proto.Response.UserInfo, cn.csuosa.chatroomcli.proto.Response.UserInfo.Builder, cn.csuosa.chatroomcli.proto.Response.UserInfoOrBuilder>(
+                  userInfo_,
                   ((bitField0_ & 0x00000008) != 0),
                   getParentForChildren(),
                   isClean());
-          memberInfo_ = null;
+          userInfo_ = null;
         }
-        return memberInfoBuilder_;
+        return userInfoBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -4596,26 +4596,20 @@ public final class Response {
 
   }
 
-  public interface LoginUserInfoOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:cn.csuosa.pojo.response.LoginUserInfo)
+  public interface UserInfoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:cn.csuosa.pojo.response.UserInfo)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
-     * @return Whether the id field is set.
+     * <code>optional int64 uid = 1;</code>
+     * @return Whether the uid field is set.
      */
-    boolean hasId();
+    boolean hasUid();
     /**
-     * <code>optional string id = 1;</code>
-     * @return The id.
+     * <code>optional int64 uid = 1;</code>
+     * @return The uid.
      */
-    java.lang.String getId();
-    /**
-     * <code>optional string id = 1;</code>
-     * @return The bytes for id.
-     */
-    com.google.protobuf.ByteString
-        getIdBytes();
+    long getUid();
 
     /**
      * <code>string memberNick = 2;</code>
@@ -4630,19 +4624,18 @@ public final class Response {
         getMemberNickBytes();
   }
   /**
-   * Protobuf type {@code cn.csuosa.pojo.response.LoginUserInfo}
+   * Protobuf type {@code cn.csuosa.pojo.response.UserInfo}
    */
-  public static final class LoginUserInfo extends
+  public static final class UserInfo extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:cn.csuosa.pojo.response.LoginUserInfo)
-      LoginUserInfoOrBuilder {
+      // @@protoc_insertion_point(message_implements:cn.csuosa.pojo.response.UserInfo)
+      UserInfoOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use LoginUserInfo.newBuilder() to construct.
-    private LoginUserInfo(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use UserInfo.newBuilder() to construct.
+    private UserInfo(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private LoginUserInfo() {
-      id_ = "";
+    private UserInfo() {
       memberNick_ = "";
     }
 
@@ -4650,7 +4643,7 @@ public final class Response {
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new LoginUserInfo();
+      return new UserInfo();
     }
 
     @java.lang.Override
@@ -4658,7 +4651,7 @@ public final class Response {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private LoginUserInfo(
+    private UserInfo(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -4677,10 +4670,9 @@ public final class Response {
             case 0:
               done = true;
               break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 8: {
               bitField0_ |= 0x00000001;
-              id_ = s;
+              uid_ = input.readInt64();
               break;
             }
             case 18: {
@@ -4710,62 +4702,35 @@ public final class Response {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return cn.csuosa.chatroomcli.proto.Response.internal_static_cn_csuosa_pojo_response_LoginUserInfo_descriptor;
+      return cn.csuosa.chatroomcli.proto.Response.internal_static_cn_csuosa_pojo_response_UserInfo_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return cn.csuosa.chatroomcli.proto.Response.internal_static_cn_csuosa_pojo_response_LoginUserInfo_fieldAccessorTable
+      return cn.csuosa.chatroomcli.proto.Response.internal_static_cn_csuosa_pojo_response_UserInfo_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              cn.csuosa.chatroomcli.proto.Response.LoginUserInfo.class, cn.csuosa.chatroomcli.proto.Response.LoginUserInfo.Builder.class);
+              cn.csuosa.chatroomcli.proto.Response.UserInfo.class, cn.csuosa.chatroomcli.proto.Response.UserInfo.Builder.class);
     }
 
     private int bitField0_;
-    public static final int ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object id_;
+    public static final int UID_FIELD_NUMBER = 1;
+    private long uid_;
     /**
-     * <code>optional string id = 1;</code>
-     * @return Whether the id field is set.
+     * <code>optional int64 uid = 1;</code>
+     * @return Whether the uid field is set.
      */
     @java.lang.Override
-    public boolean hasId() {
+    public boolean hasUid() {
       return ((bitField0_ & 0x00000001) != 0);
     }
     /**
-     * <code>optional string id = 1;</code>
-     * @return The id.
+     * <code>optional int64 uid = 1;</code>
+     * @return The uid.
      */
     @java.lang.Override
-    public java.lang.String getId() {
-      java.lang.Object ref = id_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        id_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>optional string id = 1;</code>
-     * @return The bytes for id.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getIdBytes() {
-      java.lang.Object ref = id_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        id_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public long getUid() {
+      return uid_;
     }
 
     public static final int MEMBERNICK_FIELD_NUMBER = 2;
@@ -4821,7 +4786,7 @@ public final class Response {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) != 0)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
+        output.writeInt64(1, uid_);
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(memberNick_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, memberNick_);
@@ -4836,7 +4801,8 @@ public final class Response {
 
       size = 0;
       if (((bitField0_ & 0x00000001) != 0)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(1, uid_);
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(memberNick_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, memberNick_);
@@ -4851,15 +4817,15 @@ public final class Response {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof cn.csuosa.chatroomcli.proto.Response.LoginUserInfo)) {
+      if (!(obj instanceof cn.csuosa.chatroomcli.proto.Response.UserInfo)) {
         return super.equals(obj);
       }
-      cn.csuosa.chatroomcli.proto.Response.LoginUserInfo other = (cn.csuosa.chatroomcli.proto.Response.LoginUserInfo) obj;
+      cn.csuosa.chatroomcli.proto.Response.UserInfo other = (cn.csuosa.chatroomcli.proto.Response.UserInfo) obj;
 
-      if (hasId() != other.hasId()) return false;
-      if (hasId()) {
-        if (!getId()
-            .equals(other.getId())) return false;
+      if (hasUid() != other.hasUid()) return false;
+      if (hasUid()) {
+        if (getUid()
+            != other.getUid()) return false;
       }
       if (!getMemberNick()
           .equals(other.getMemberNick())) return false;
@@ -4874,9 +4840,10 @@ public final class Response {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasId()) {
-        hash = (37 * hash) + ID_FIELD_NUMBER;
-        hash = (53 * hash) + getId().hashCode();
+      if (hasUid()) {
+        hash = (37 * hash) + UID_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+            getUid());
       }
       hash = (37 * hash) + MEMBERNICK_FIELD_NUMBER;
       hash = (53 * hash) + getMemberNick().hashCode();
@@ -4885,69 +4852,69 @@ public final class Response {
       return hash;
     }
 
-    public static cn.csuosa.chatroomcli.proto.Response.LoginUserInfo parseFrom(
+    public static cn.csuosa.chatroomcli.proto.Response.UserInfo parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static cn.csuosa.chatroomcli.proto.Response.LoginUserInfo parseFrom(
+    public static cn.csuosa.chatroomcli.proto.Response.UserInfo parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static cn.csuosa.chatroomcli.proto.Response.LoginUserInfo parseFrom(
+    public static cn.csuosa.chatroomcli.proto.Response.UserInfo parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static cn.csuosa.chatroomcli.proto.Response.LoginUserInfo parseFrom(
+    public static cn.csuosa.chatroomcli.proto.Response.UserInfo parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static cn.csuosa.chatroomcli.proto.Response.LoginUserInfo parseFrom(byte[] data)
+    public static cn.csuosa.chatroomcli.proto.Response.UserInfo parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static cn.csuosa.chatroomcli.proto.Response.LoginUserInfo parseFrom(
+    public static cn.csuosa.chatroomcli.proto.Response.UserInfo parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static cn.csuosa.chatroomcli.proto.Response.LoginUserInfo parseFrom(java.io.InputStream input)
+    public static cn.csuosa.chatroomcli.proto.Response.UserInfo parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static cn.csuosa.chatroomcli.proto.Response.LoginUserInfo parseFrom(
+    public static cn.csuosa.chatroomcli.proto.Response.UserInfo parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static cn.csuosa.chatroomcli.proto.Response.LoginUserInfo parseDelimitedFrom(java.io.InputStream input)
+    public static cn.csuosa.chatroomcli.proto.Response.UserInfo parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static cn.csuosa.chatroomcli.proto.Response.LoginUserInfo parseDelimitedFrom(
+    public static cn.csuosa.chatroomcli.proto.Response.UserInfo parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static cn.csuosa.chatroomcli.proto.Response.LoginUserInfo parseFrom(
+    public static cn.csuosa.chatroomcli.proto.Response.UserInfo parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static cn.csuosa.chatroomcli.proto.Response.LoginUserInfo parseFrom(
+    public static cn.csuosa.chatroomcli.proto.Response.UserInfo parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -4960,7 +4927,7 @@ public final class Response {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(cn.csuosa.chatroomcli.proto.Response.LoginUserInfo prototype) {
+    public static Builder newBuilder(cn.csuosa.chatroomcli.proto.Response.UserInfo prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -4976,26 +4943,26 @@ public final class Response {
       return builder;
     }
     /**
-     * Protobuf type {@code cn.csuosa.pojo.response.LoginUserInfo}
+     * Protobuf type {@code cn.csuosa.pojo.response.UserInfo}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:cn.csuosa.pojo.response.LoginUserInfo)
-        cn.csuosa.chatroomcli.proto.Response.LoginUserInfoOrBuilder {
+        // @@protoc_insertion_point(builder_implements:cn.csuosa.pojo.response.UserInfo)
+        cn.csuosa.chatroomcli.proto.Response.UserInfoOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return cn.csuosa.chatroomcli.proto.Response.internal_static_cn_csuosa_pojo_response_LoginUserInfo_descriptor;
+        return cn.csuosa.chatroomcli.proto.Response.internal_static_cn_csuosa_pojo_response_UserInfo_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return cn.csuosa.chatroomcli.proto.Response.internal_static_cn_csuosa_pojo_response_LoginUserInfo_fieldAccessorTable
+        return cn.csuosa.chatroomcli.proto.Response.internal_static_cn_csuosa_pojo_response_UserInfo_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                cn.csuosa.chatroomcli.proto.Response.LoginUserInfo.class, cn.csuosa.chatroomcli.proto.Response.LoginUserInfo.Builder.class);
+                cn.csuosa.chatroomcli.proto.Response.UserInfo.class, cn.csuosa.chatroomcli.proto.Response.UserInfo.Builder.class);
       }
 
-      // Construct using cn.csuosa.chatroomcli.proto.Response.LoginUserInfo.newBuilder()
+      // Construct using cn.csuosa.chatroomcli.proto.Response.UserInfo.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -5013,7 +4980,7 @@ public final class Response {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        id_ = "";
+        uid_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000001);
         memberNick_ = "";
 
@@ -5023,17 +4990,17 @@ public final class Response {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return cn.csuosa.chatroomcli.proto.Response.internal_static_cn_csuosa_pojo_response_LoginUserInfo_descriptor;
+        return cn.csuosa.chatroomcli.proto.Response.internal_static_cn_csuosa_pojo_response_UserInfo_descriptor;
       }
 
       @java.lang.Override
-      public cn.csuosa.chatroomcli.proto.Response.LoginUserInfo getDefaultInstanceForType() {
-        return cn.csuosa.chatroomcli.proto.Response.LoginUserInfo.getDefaultInstance();
+      public cn.csuosa.chatroomcli.proto.Response.UserInfo getDefaultInstanceForType() {
+        return cn.csuosa.chatroomcli.proto.Response.UserInfo.getDefaultInstance();
       }
 
       @java.lang.Override
-      public cn.csuosa.chatroomcli.proto.Response.LoginUserInfo build() {
-        cn.csuosa.chatroomcli.proto.Response.LoginUserInfo result = buildPartial();
+      public cn.csuosa.chatroomcli.proto.Response.UserInfo build() {
+        cn.csuosa.chatroomcli.proto.Response.UserInfo result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -5041,14 +5008,14 @@ public final class Response {
       }
 
       @java.lang.Override
-      public cn.csuosa.chatroomcli.proto.Response.LoginUserInfo buildPartial() {
-        cn.csuosa.chatroomcli.proto.Response.LoginUserInfo result = new cn.csuosa.chatroomcli.proto.Response.LoginUserInfo(this);
+      public cn.csuosa.chatroomcli.proto.Response.UserInfo buildPartial() {
+        cn.csuosa.chatroomcli.proto.Response.UserInfo result = new cn.csuosa.chatroomcli.proto.Response.UserInfo(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.uid_ = uid_;
           to_bitField0_ |= 0x00000001;
         }
-        result.id_ = id_;
         result.memberNick_ = memberNick_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -5089,20 +5056,18 @@ public final class Response {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof cn.csuosa.chatroomcli.proto.Response.LoginUserInfo) {
-          return mergeFrom((cn.csuosa.chatroomcli.proto.Response.LoginUserInfo)other);
+        if (other instanceof cn.csuosa.chatroomcli.proto.Response.UserInfo) {
+          return mergeFrom((cn.csuosa.chatroomcli.proto.Response.UserInfo)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(cn.csuosa.chatroomcli.proto.Response.LoginUserInfo other) {
-        if (other == cn.csuosa.chatroomcli.proto.Response.LoginUserInfo.getDefaultInstance()) return this;
-        if (other.hasId()) {
-          bitField0_ |= 0x00000001;
-          id_ = other.id_;
-          onChanged();
+      public Builder mergeFrom(cn.csuosa.chatroomcli.proto.Response.UserInfo other) {
+        if (other == cn.csuosa.chatroomcli.proto.Response.UserInfo.getDefaultInstance()) return this;
+        if (other.hasUid()) {
+          setUid(other.getUid());
         }
         if (!other.getMemberNick().isEmpty()) {
           memberNick_ = other.memberNick_;
@@ -5123,11 +5088,11 @@ public final class Response {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        cn.csuosa.chatroomcli.proto.Response.LoginUserInfo parsedMessage = null;
+        cn.csuosa.chatroomcli.proto.Response.UserInfo parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (cn.csuosa.chatroomcli.proto.Response.LoginUserInfo) e.getUnfinishedMessage();
+          parsedMessage = (cn.csuosa.chatroomcli.proto.Response.UserInfo) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -5138,85 +5103,41 @@ public final class Response {
       }
       private int bitField0_;
 
-      private java.lang.Object id_ = "";
+      private long uid_ ;
       /**
-       * <code>optional string id = 1;</code>
-       * @return Whether the id field is set.
+       * <code>optional int64 uid = 1;</code>
+       * @return Whether the uid field is set.
        */
-      public boolean hasId() {
+      @java.lang.Override
+      public boolean hasUid() {
         return ((bitField0_ & 0x00000001) != 0);
       }
       /**
-       * <code>optional string id = 1;</code>
-       * @return The id.
+       * <code>optional int64 uid = 1;</code>
+       * @return The uid.
        */
-      public java.lang.String getId() {
-        java.lang.Object ref = id_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          id_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      @java.lang.Override
+      public long getUid() {
+        return uid_;
       }
       /**
-       * <code>optional string id = 1;</code>
-       * @return The bytes for id.
-       */
-      public com.google.protobuf.ByteString
-          getIdBytes() {
-        java.lang.Object ref = id_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          id_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string id = 1;</code>
-       * @param value The id to set.
+       * <code>optional int64 uid = 1;</code>
+       * @param value The uid to set.
        * @return This builder for chaining.
        */
-      public Builder setId(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        id_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string id = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        id_ = getDefaultInstance().getId();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string id = 1;</code>
-       * @param value The bytes for id to set.
-       * @return This builder for chaining.
-       */
-      public Builder setIdBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
+      public Builder setUid(long value) {
         bitField0_ |= 0x00000001;
-        id_ = value;
+        uid_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int64 uid = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUid() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        uid_ = 0L;
         onChanged();
         return this;
       }
@@ -5309,41 +5230,41 @@ public final class Response {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:cn.csuosa.pojo.response.LoginUserInfo)
+      // @@protoc_insertion_point(builder_scope:cn.csuosa.pojo.response.UserInfo)
     }
 
-    // @@protoc_insertion_point(class_scope:cn.csuosa.pojo.response.LoginUserInfo)
-    private static final cn.csuosa.chatroomcli.proto.Response.LoginUserInfo DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:cn.csuosa.pojo.response.UserInfo)
+    private static final cn.csuosa.chatroomcli.proto.Response.UserInfo DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new cn.csuosa.chatroomcli.proto.Response.LoginUserInfo();
+      DEFAULT_INSTANCE = new cn.csuosa.chatroomcli.proto.Response.UserInfo();
     }
 
-    public static cn.csuosa.chatroomcli.proto.Response.LoginUserInfo getDefaultInstance() {
+    public static cn.csuosa.chatroomcli.proto.Response.UserInfo getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<LoginUserInfo>
-        PARSER = new com.google.protobuf.AbstractParser<LoginUserInfo>() {
+    private static final com.google.protobuf.Parser<UserInfo>
+        PARSER = new com.google.protobuf.AbstractParser<UserInfo>() {
       @java.lang.Override
-      public LoginUserInfo parsePartialFrom(
+      public UserInfo parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new LoginUserInfo(input, extensionRegistry);
+        return new UserInfo(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<LoginUserInfo> parser() {
+    public static com.google.protobuf.Parser<UserInfo> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<LoginUserInfo> getParserForType() {
+    public com.google.protobuf.Parser<UserInfo> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public cn.csuosa.chatroomcli.proto.Response.LoginUserInfo getDefaultInstanceForType() {
+    public cn.csuosa.chatroomcli.proto.Response.UserInfo getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -5370,10 +5291,10 @@ public final class Response {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_cn_csuosa_pojo_response_ChannelInfo_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_cn_csuosa_pojo_response_LoginUserInfo_descriptor;
+    internal_static_cn_csuosa_pojo_response_UserInfo_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_cn_csuosa_pojo_response_LoginUserInfo_fieldAccessorTable;
+      internal_static_cn_csuosa_pojo_response_UserInfo_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -5384,27 +5305,26 @@ public final class Response {
   static {
     java.lang.String[] descriptorData = {
       "\n\016Response.proto\022\027cn.csuosa.pojo.respons" +
-      "e\"\315\003\n\014ResponsePOJO\0228\n\004type\030\001 \001(\0162*.cn.cs" +
+      "e\"\306\003\n\014ResponsePOJO\0228\n\004type\030\001 \001(\0162*.cn.cs" +
       "uosa.pojo.response.ResponsePOJO.Type\0224\n\006" +
       "result\030\002 \001(\0132\037.cn.csuosa.pojo.response.R" +
       "esultH\000\210\001\001\0226\n\007message\030\003 \001(\0132 .cn.csuosa." +
       "pojo.response.MessageH\001\210\001\001\0229\n\013channelInf" +
       "o\030\004 \003(\0132$.cn.csuosa.pojo.response.Channe" +
-      "lInfo\022:\n\nmemberInfo\030\005 \003(\0132&.cn.csuosa.po" +
-      "jo.response.LoginUserInfo\"\206\001\n\004Type\022\n\n\006RE" +
-      "TAIN\020\000\022\n\n\006RESULT\020\001\022\014\n\010PUSH_MSG\020\002\022\021\n\rPUSH" +
-      "_CHA_LIST\020\003\022\030\n\024PUSH_LOGIN_USER_LIST\020\004\022\030\n" +
-      "\024PUSH_CHA_MEMBER_LIST\020\005\022\021\n\rPUSH_SYS_INFO" +
-      "\020\006B\t\n\007_resultB\n\n\010_message\"2\n\006Result\022\016\n\006S" +
-      "tCode\030\001 \001(\005\022\020\n\003msg\030\002 \001(\tH\000\210\001\001B\006\n\004_msg\"^\n" +
-      "\007Message\022\017\n\007channel\030\001 \001(\t\022\020\n\010fromNick\030\002 " +
-      "\001(\t\022\014\n\004type\030\003 \001(\005\022\021\n\ttimestamp\030\004 \001(\003\022\017\n\007" +
-      "content\030\005 \001(\014\"N\n\013ChannelInfo\022\014\n\004name\030\001 \001" +
-      "(\t\022\014\n\004isIN\030\002 \001(\010\022\020\n\010isPublic\030\003 \001(\010\022\021\n\tme" +
-      "mberNum\030\004 \001(\005\";\n\rLoginUserInfo\022\017\n\002id\030\001 \001" +
-      "(\tH\000\210\001\001\022\022\n\nmemberNick\030\002 \001(\tB\005\n\003_idB)\n\033cn" +
-      ".csuosa.chatroomcli.protoB\010ResponseH\001b\006p" +
-      "roto3"
+      "lInfo\0223\n\010userInfo\030\005 \003(\0132!.cn.csuosa.pojo" +
+      ".response.UserInfo\"\206\001\n\004Type\022\n\n\006RETAIN\020\000\022" +
+      "\n\n\006RESULT\020\001\022\014\n\010PUSH_MSG\020\002\022\021\n\rPUSH_CHA_LI" +
+      "ST\020\003\022\030\n\024PUSH_LOGIN_USER_LIST\020\004\022\030\n\024PUSH_C" +
+      "HA_MEMBER_LIST\020\005\022\021\n\rPUSH_SYS_INFO\020\006B\t\n\007_" +
+      "resultB\n\n\010_message\"2\n\006Result\022\016\n\006StCode\030\001" +
+      " \001(\005\022\020\n\003msg\030\002 \001(\tH\000\210\001\001B\006\n\004_msg\"^\n\007Messag" +
+      "e\022\017\n\007channel\030\001 \001(\t\022\020\n\010fromNick\030\002 \001(\t\022\014\n\004" +
+      "type\030\003 \001(\005\022\021\n\ttimestamp\030\004 \001(\003\022\017\n\007content" +
+      "\030\005 \001(\014\"N\n\013ChannelInfo\022\014\n\004name\030\001 \001(\t\022\014\n\004i" +
+      "sIN\030\002 \001(\010\022\020\n\010isPublic\030\003 \001(\010\022\021\n\tmemberNum" +
+      "\030\004 \001(\005\"8\n\010UserInfo\022\020\n\003uid\030\001 \001(\003H\000\210\001\001\022\022\n\n" +
+      "memberNick\030\002 \001(\tB\006\n\004_uidB)\n\033cn.csuosa.ch" +
+      "atroomcli.protoB\010ResponseH\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -5415,7 +5335,7 @@ public final class Response {
     internal_static_cn_csuosa_pojo_response_ResponsePOJO_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cn_csuosa_pojo_response_ResponsePOJO_descriptor,
-        new java.lang.String[] { "Type", "Result", "Message", "ChannelInfo", "MemberInfo", "Result", "Message", });
+        new java.lang.String[] { "Type", "Result", "Message", "ChannelInfo", "UserInfo", "Result", "Message", });
     internal_static_cn_csuosa_pojo_response_Result_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_cn_csuosa_pojo_response_Result_fieldAccessorTable = new
@@ -5434,12 +5354,12 @@ public final class Response {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cn_csuosa_pojo_response_ChannelInfo_descriptor,
         new java.lang.String[] { "Name", "IsIN", "IsPublic", "MemberNum", });
-    internal_static_cn_csuosa_pojo_response_LoginUserInfo_descriptor =
+    internal_static_cn_csuosa_pojo_response_UserInfo_descriptor =
       getDescriptor().getMessageTypes().get(4);
-    internal_static_cn_csuosa_pojo_response_LoginUserInfo_fieldAccessorTable = new
+    internal_static_cn_csuosa_pojo_response_UserInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_cn_csuosa_pojo_response_LoginUserInfo_descriptor,
-        new java.lang.String[] { "Id", "MemberNick", "Id", });
+        internal_static_cn_csuosa_pojo_response_UserInfo_descriptor,
+        new java.lang.String[] { "Uid", "MemberNick", "Uid", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

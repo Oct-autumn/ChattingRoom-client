@@ -87,13 +87,13 @@ public class MainSceneController implements Initializable
         if (pwdIsVisible)
         {
             loginInfo.setText(String.format("%s  密码：%s",
-                    Main.config.getUserNick(),
+                    Main.config.getUserAccount(),
                     Main.config.getPwd().equals("") ? "无" : "（点击查看）"));
             pwdIsVisible = false;
         } else
         {
             loginInfo.setText(String.format("%s  密码：%s",
-                    Main.config.getUserNick(),
+                    Main.config.getUserAccount(),
                     Main.config.getPwd().equals("") ? "无" : Main.config.getPwd()));
             pwdIsVisible = true;
         }
@@ -201,7 +201,7 @@ public class MainSceneController implements Initializable
         Platform.runLater(() -> {
             thisScene.setFill(Color.TRANSPARENT);
             ((Text) thisScene.lookup("#loginInfo")).setText(String.format("%s  密码：%s",
-                    Main.config.getUserNick(),
+                    Main.config.getUserAccount(),
                     Main.config.getPwd().equals("") ? "无" : "（点击查看）"));
             ((Text) thisScene.lookup("#statusInfo")).setText("就绪.");
             ((WebView) thisScene.lookup("#webView")).getEngine().loadContent("<h1>TEST</h1>\n<p>Hello World~</p>");

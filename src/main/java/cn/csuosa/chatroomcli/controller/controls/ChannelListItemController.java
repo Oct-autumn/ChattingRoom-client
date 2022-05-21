@@ -28,7 +28,7 @@ public class ChannelListItemController extends HBox implements Initializable
         joinedProperty = isJoined;
 
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getClassLoader()
-                .getResource("Fxml/ChannelListItem-HBox.fxml"));
+                .getResource("Fxml/Control/ChannelListItem-HBox.fxml"));
 
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -53,17 +53,12 @@ public class ChannelListItemController extends HBox implements Initializable
 
                 if (joinedProperty)
                 {
-                    textChannelName.getStyleClass().clear();
-                    textChannelName.getStyleClass().add("text-channel-name-joined");
-                    textChannelInfo.getStyleClass().clear();
-                    textChannelInfo.getStyleClass().add("text-channel-info-joined");
-
+                    textChannelName.getStyleClass().set(0, "text-channel-name-joined");
+                    textChannelInfo.getStyleClass().set(0, "text-channel-info-joined");
                 } else
                 {
-                    textChannelName.getStyleClass().clear();
-                    textChannelName.getStyleClass().add("text-channel-name-normal");
-                    textChannelInfo.getStyleClass().clear();
-                    textChannelInfo.getStyleClass().add("text-channel-info-normal");
+                    textChannelName.getStyleClass().set(0, "text-channel-name-normal");
+                    textChannelInfo.getStyleClass().set(0, "text-channel-info-normal");
                 }
             }
             {

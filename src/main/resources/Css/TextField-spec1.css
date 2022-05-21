@@ -1,0 +1,36 @@
+.text-field-base {
+    -fx-font-family: Arial;
+    -fx-font-size: 16px;
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
+}
+
+.text-field-normal {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #A0A0A0;
+    -fx-text-fill: #000000;
+}
+.text-field-disabled {
+    -fx-background-color: #f0f0f0;
+    -fx-border-color: #a0a0a0;
+    -fx-text-fill: #808080;
+}
+
+.text-field-status-unfocused {
+}
+
+.text-field-status-focused {
+    -fx-effect: dropshadow(three-pass-box, #66ccff, 5, 0.5, 0, 0);
+}
+
+.text-field-status-error {
+    -fx-effect: dropshadow(three-pass-box, #ff6666, 5, 0.5, 0, 0);
+}
+
+.text-field-status-warning {
+    -fx-effect: dropshadow(three-pass-box, #ffcc30, 5, 0.5, 0, 0);
+}
+
+.text-field-status-ok {
+    -fx-effect: dropshadow(three-pass-box, #50e033, 5, 0.5, 0, 0);
+}

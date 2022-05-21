@@ -3,12 +3,12 @@ package cn.csuosa.chatroomcli.handlers;
 import cn.csuosa.chatroomcli.Core;
 import cn.csuosa.chatroomcli.GUIBootClass;
 import cn.csuosa.chatroomcli.Main;
+import cn.csuosa.chatroomcli.common.AsyncEventQueue.AsyncEventQueue;
 import cn.csuosa.chatroomcli.controller.controls.ChannelListItemController;
 import cn.csuosa.chatroomcli.model.Channel;
 import cn.csuosa.chatroomcli.model.Message;
 import cn.csuosa.chatroomcli.proto.Request;
 import cn.csuosa.chatroomcli.proto.Response;
-import cn.csuosa.chatroomcli.controller.scene.ConnectSceneController;
 import com.google.protobuf.ByteString;
 import com.sun.javafx.collections.ObservableListWrapper;
 import io.netty.channel.ChannelHandlerContext;
@@ -16,18 +16,18 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.handler.timeout.IdleStateEvent;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
-import javafx.geometry.Rectangle2D;
-import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Screen;
-import javafx.stage.Stage;
 
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Date;
 
+import static cn.csuosa.chatroomcli.Main.loginStatus;
+
 public class ResponseHandler extends ChannelInboundHandlerAdapter
 {
+    public static boolean serverChannelActivated = false;
+
     /**
      * 心跳包
      *
@@ -59,17 +59,8 @@ public class ResponseHandler extends ChannelInboundHandlerAdapter
     public void channelInactive(ChannelHandlerContext ctx) throws Exception
     {
         Main.socketChannel = null;
+        loginStatus = 0;
         Core.logoutAction();
-        Platform.runLater(() -> {
-            Stage connectStage = GUIBootClass.getStage("connectStage");
-            Scene scene = GUIBootClass.getConnectWindowScene();
-            connectStage.show();
-            ConnectSceneController.initializeControls(connectStage.getScene());
-            Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
-            connectStage.setX((screenBounds.getWidth() - scene.getWidth()) / 2);
-            connectStage.setY((screenBounds.getHeight() - scene.getHeight()) / 2);
-            GUIBootClass.getStage("mainStage").close();
-        });
     }
 
     @Override
@@ -83,8 +74,8 @@ public class ResponseHandler extends ChannelInboundHandlerAdapter
             }
             case RESULT ->
             {
-                if (response.getResult().getStCode() != 0)
-                    Main.consoleLog.addMessage(new Message(new Date().getTime(), "", "", Message.MessageType.PLAIN_TEXT, response.getResult().getMsgBytes()));
+                handleResultMsg(response.getResult());
+                Main.consoleLog.addMessage(new Message(new Date().getTime(), "", "", Message.MessageType.PLAIN_TEXT, response.getResult().getMsgBytes()));
             }
             case PUSH_MSG ->
             {
@@ -141,6 +132,19 @@ public class ResponseHandler extends ChannelInboundHandlerAdapter
             default ->
             {
             }
+        }
+    }
+
+    private void handleResultMsg(Response.Result result)
+    {
+        int stCode = result.getStCode();
+        String msg = result.getMsg();
+        String prefix = msg.split("\\|")[0];
+        String content = msg.split("\\|").length > 1 ? msg.split("\\|")[1] : null;
+        switch (prefix)
+        {
+            case "VERSION" ->{}
+            case "LOGIN" -> {Main.waitingQueue.newEvent(content, prefix);}
         }
     }
 }

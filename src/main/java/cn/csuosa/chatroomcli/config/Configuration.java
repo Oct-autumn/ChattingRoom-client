@@ -22,7 +22,7 @@ public class Configuration
     /**
      * 用户名
      */
-    public String userNick = "";
+    public String userAccount = "";
     /**
      * 认证密码
      */
@@ -30,6 +30,6 @@ public class Configuration
 
     public void debug()
     {
-        System.out.println(serverURL + ' ' + serverPort + '\n' + userNick + ' ' + pwd);
+        System.out.println(serverURL + ' ' + serverPort + '\n' + userAccount + ' ' + pwd);
     }
 }

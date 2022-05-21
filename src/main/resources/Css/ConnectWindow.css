@@ -6,10 +6,12 @@
 }
 
 .button-close-base {
+    -fx-background-color: #00000000;
+    -fx-border-color: #00000000;
+    -fx-background-radius: 0px 8px 0px 0px;
     -fx-background-size: 30px 25px;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
-    -fx-background-radius: 0px 8px 0px 0px;
 }
 
 .button-close-normal {
@@ -25,6 +27,9 @@
 }
 
 .button-minimize-base {
+    -fx-background-color: #00000000;
+    -fx-border-color: #00000000;
+    -fx-background-radius: 0px 8px 0px 0px;
     -fx-background-size: 30px 25px;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
@@ -40,4 +45,48 @@
 
 .button-minimize-mouse-pressed {
     -fx-background-image: url(../img/minimizeIcon-mouse-pressed.png);
+}
+
+.button-toggle-connection-base {
+    -fx-font-family: SimHei;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
+}
+
+.button-toggle-connection-connect {
+    -fx-background-color: #5cabf5;
+    -fx-border-color: #0b57a6;
+    -fx-text-fill: #ffffff;
+}
+
+.button-toggle-connection-disconnect {
+    -fx-background-color: #f55c5c;
+    -fx-border-color: #a60b0b;
+    -fx-text-fill: #ffffff;
+}
+
+.button-toggle-connection-disabled {
+    -fx-background-color: #c2c2c2;
+    -fx-border-color: #595959;
+    -fx-text-fill: #6e6e6e;
+}
+
+.label-textButton-base {
+    -fx-font-family: Arial, "华文细黑";
+    -fx-font-size: 14px;
+}
+
+.label-textButton-normal {
+    -fx-text-fill: #b0b0b0;
+}
+
+.label-textButton-mouse-on {
+    -fx-text-fill: #606060;
+}
+
+.label-textButton-mouse-pressed {
+    -fx-text-fill: #606060;
+    -fx-effect: dropshadow(two-pass-box, #66ccff, 1, 0.5, 0, 0);
 }

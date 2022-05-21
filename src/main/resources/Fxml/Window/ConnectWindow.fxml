@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Tooltip?>
@@ -16,7 +17,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox fx:id="mainVBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" styleClass="vbox-main" stylesheets="@../../Css/ConnectWindow.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.csuosa.chatroomcli.controller.scene.ConnectSceneController">
+<VBox fx:id="mainVBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="520.0" styleClass="vbox-main" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.csuosa.chatroomcli.controller.scene.ConnectSceneController">
    <children>
       <HBox fx:id="titleBar" alignment="TOP_RIGHT" maxHeight="25.0" minHeight="25.0" prefHeight="25.0" style="-fx-background-color: LightBlue; -fx-background-radius: 8px 8px 0 0;">
          <children>
@@ -37,6 +38,10 @@
                <tooltip>
                   <Tooltip text="最小化窗口" />
                </tooltip>
+               <styleClass>
+                  <String fx:value="button-minimize-base" />
+                  <String fx:value="button-minimize-normal" />
+               </styleClass>
             </Button>
             <Button fx:id="buttonExit" maxHeight="25.0" maxWidth="35.0" mnemonicParsing="false" onAction="#exitProgram" prefHeight="25.0" prefWidth="30.0">
                <tooltip>
@@ -45,6 +50,10 @@
                <HBox.margin>
                   <Insets />
                </HBox.margin>
+               <styleClass>
+                  <String fx:value="button-close-base" />
+                  <String fx:value="button-close-normal" />
+               </styleClass>
             </Button>
          </children>
       </HBox>
@@ -59,17 +68,43 @@
                <font>
                   <Font size="16.0" />
                </font>
+               <styleClass>
+                  <String fx:value="text-field-base" />
+                  <String fx:value="text-field-normal" />
+                  <String fx:value="text-field-status-unfocused" />
+               </styleClass>
             </TextField>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="聊天服务器端口：" GridPane.rowIndex="1">
                <font>
                   <Font name="Arial" size="18.0" />
                </font>
             </Text>
-            <TextField fx:id="textFieldServerPort" maxWidth="65.0" minWidth="65.0" prefWidth="65.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </TextField>
+            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <TextField fx:id="textFieldServerPort" maxWidth="65.0" minWidth="65.0" prefHeight="30.0" prefWidth="65.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="text-field-base" />
+                        <String fx:value="text-field-normal" />
+                        <String fx:value="text-field-status-unfocused" />
+                     </styleClass>
+                  </TextField>
+                  <Button fx:id="buttonToggleConnection" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#connectToServer" prefHeight="30.0" prefWidth="120.0" text="连接服务器">
+                     <font>
+                        <Font name="YouYuan" size="16.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="49.0" />
+                     </HBox.margin>
+                     <styleClass>
+                        <String fx:value="button-toggle-connection-base" />
+                        <String fx:value="button-toggle-connection-connect" />
+                     </styleClass>
+                  </Button>
+               </children>
+            </HBox>
          </children>
          <columnConstraints>
             <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" />
@@ -88,99 +123,13 @@
       </GridPane>
       <Separator prefWidth="200.0">
          <VBox.margin>
-            <Insets left="10.0" right="10.0" />
+            <Insets left="10.0" right="10.0" top="5.0" />
          </VBox.margin>
       </Separator>
-      <VBox>
-         <VBox.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </VBox.margin>
-         <children>
-            <GridPane alignment="CENTER_LEFT" hgap="10.0" vgap="10.0">
-              <columnConstraints>
-                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="昵称：">
-                     <GridPane.margin>
-                        <Insets left="20.0" right="20.0" />
-                     </GridPane.margin>
-                     <font>
-                        <Font name="Arial" size="18.0" />
-                     </font>
-                  </Text>
-                  <TextField fx:id="textFieldUserNick" GridPane.columnIndex="1">
-                     <GridPane.margin>
-                        <Insets left="20.0" right="20.0" />
-                     </GridPane.margin>
-                     <tooltip>
-                        <Tooltip text="Only letters and numbers" />
-                     </tooltip>
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </TextField>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="密码：" GridPane.rowIndex="1">
-                     <GridPane.margin>
-                        <Insets left="20.0" right="20.0" />
-                     </GridPane.margin>
-                     <font>
-                        <Font name="Arial" size="18.0" />
-                     </font>
-                  </Text>
-                  <PasswordField fx:id="pwdField" promptText="（如果有）" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                     <GridPane.margin>
-                        <Insets left="20.0" right="20.0" />
-                     </GridPane.margin>
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </PasswordField>
-               </children>
-               <padding>
-                  <Insets bottom="10.0" left="60.0" right="60.0" top="10.0" />
-               </padding>
-            </GridPane>
-         </children>
-      </VBox>
-      <Separator prefWidth="200.0">
-         <VBox.margin>
-            <Insets left="10.0" right="10.0" />
-         </VBox.margin>
-      </Separator>
-      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-         <children>
-            <Button fx:id="buttonConnect" mnemonicParsing="false" onAction="#connectAndLogin" style="-fx-border-radius: 10;" text="连接并登录">
-               <font>
-                  <Font name="LiSu" size="20.0" />
-               </font>
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding>
-               <HBox.margin>
-                  <Insets right="5.0" />
-               </HBox.margin>
-            </Button>
-            <Button fx:id="buttonReg" mnemonicParsing="false" onAction="#connectAndRegister" style="-fx-border-radius: 10;" text="注册">
-               <font>
-                  <Font name="LiSu" size="20.0" />
-               </font>
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding>
-               <HBox.margin>
-                  <Insets left="5.0" />
-               </HBox.margin>
-            </Button>
-         </children>
-         <VBox.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </VBox.margin>
-      </HBox>
+      <VBox fx:id="vBoxControlContainer" />
    </children>
+   <stylesheets>
+      <URL value="@../../Css/ConnectWindow.css" />
+      <URL value="@../../Css/TextField-spec1.css" />
+   </stylesheets>
 </VBox>

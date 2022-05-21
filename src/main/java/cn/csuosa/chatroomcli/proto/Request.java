@@ -1651,7 +1651,7 @@ public final class Request {
 
     /**
      * <pre>
-     *账号
+     *（可选，仅在登录时）账号
      * </pre>
      *
      * <code>optional int64 uid = 1;</code>
@@ -1660,7 +1660,7 @@ public final class Request {
     boolean hasUid();
     /**
      * <pre>
-     *账号
+     *（可选，仅在登录时）账号
      * </pre>
      *
      * <code>optional int64 uid = 1;</code>
@@ -1670,7 +1670,7 @@ public final class Request {
 
     /**
      * <pre>
-     *邮箱（注册时为必须）
+     *（注册时必须）邮箱
      * </pre>
      *
      * <code>optional string email = 2;</code>
@@ -1679,7 +1679,7 @@ public final class Request {
     boolean hasEmail();
     /**
      * <pre>
-     *邮箱（注册时为必须）
+     *（注册时必须）邮箱
      * </pre>
      *
      * <code>optional string email = 2;</code>
@@ -1688,7 +1688,7 @@ public final class Request {
     java.lang.String getEmail();
     /**
      * <pre>
-     *邮箱（注册时为必须）
+     *（注册时必须）邮箱
      * </pre>
      *
      * <code>optional string email = 2;</code>
@@ -1699,7 +1699,7 @@ public final class Request {
 
     /**
      * <pre>
-     *（仅在注册时）默认昵称
+     *（可选，仅在注册时）默认昵称
      * </pre>
      *
      * <code>optional string defaultNick = 3;</code>
@@ -1708,7 +1708,7 @@ public final class Request {
     boolean hasDefaultNick();
     /**
      * <pre>
-     *（仅在注册时）默认昵称
+     *（可选，仅在注册时）默认昵称
      * </pre>
      *
      * <code>optional string defaultNick = 3;</code>
@@ -1717,7 +1717,7 @@ public final class Request {
     java.lang.String getDefaultNick();
     /**
      * <pre>
-     *（仅在注册时）默认昵称
+     *（可选，仅在注册时）默认昵称
      * </pre>
      *
      * <code>optional string defaultNick = 3;</code>
@@ -1735,6 +1735,25 @@ public final class Request {
      * @return The pwd.
      */
     com.google.protobuf.ByteString getPwd();
+
+    /**
+     * <pre>
+     *（可选，仅在修改密码时）旧密码
+     * </pre>
+     *
+     * <code>optional bytes pwd_old = 5;</code>
+     * @return Whether the pwdOld field is set.
+     */
+    boolean hasPwdOld();
+    /**
+     * <pre>
+     *（可选，仅在修改密码时）旧密码
+     * </pre>
+     *
+     * <code>optional bytes pwd_old = 5;</code>
+     * @return The pwdOld.
+     */
+    com.google.protobuf.ByteString getPwdOld();
   }
   /**
    * <pre>
@@ -1756,6 +1775,7 @@ public final class Request {
       email_ = "";
       defaultNick_ = "";
       pwd_ = com.google.protobuf.ByteString.EMPTY;
+      pwdOld_ = com.google.protobuf.ByteString.EMPTY;
     }
 
     @java.lang.Override
@@ -1811,6 +1831,11 @@ public final class Request {
               pwd_ = input.readBytes();
               break;
             }
+            case 42: {
+              bitField0_ |= 0x00000008;
+              pwdOld_ = input.readBytes();
+              break;
+            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -1848,7 +1873,7 @@ public final class Request {
     private long uid_;
     /**
      * <pre>
-     *账号
+     *（可选，仅在登录时）账号
      * </pre>
      *
      * <code>optional int64 uid = 1;</code>
@@ -1860,7 +1885,7 @@ public final class Request {
     }
     /**
      * <pre>
-     *账号
+     *（可选，仅在登录时）账号
      * </pre>
      *
      * <code>optional int64 uid = 1;</code>
@@ -1875,7 +1900,7 @@ public final class Request {
     private volatile java.lang.Object email_;
     /**
      * <pre>
-     *邮箱（注册时为必须）
+     *（注册时必须）邮箱
      * </pre>
      *
      * <code>optional string email = 2;</code>
@@ -1887,7 +1912,7 @@ public final class Request {
     }
     /**
      * <pre>
-     *邮箱（注册时为必须）
+     *（注册时必须）邮箱
      * </pre>
      *
      * <code>optional string email = 2;</code>
@@ -1908,7 +1933,7 @@ public final class Request {
     }
     /**
      * <pre>
-     *邮箱（注册时为必须）
+     *（注册时必须）邮箱
      * </pre>
      *
      * <code>optional string email = 2;</code>
@@ -1933,7 +1958,7 @@ public final class Request {
     private volatile java.lang.Object defaultNick_;
     /**
      * <pre>
-     *（仅在注册时）默认昵称
+     *（可选，仅在注册时）默认昵称
      * </pre>
      *
      * <code>optional string defaultNick = 3;</code>
@@ -1945,7 +1970,7 @@ public final class Request {
     }
     /**
      * <pre>
-     *（仅在注册时）默认昵称
+     *（可选，仅在注册时）默认昵称
      * </pre>
      *
      * <code>optional string defaultNick = 3;</code>
@@ -1966,7 +1991,7 @@ public final class Request {
     }
     /**
      * <pre>
-     *（仅在注册时）默认昵称
+     *（可选，仅在注册时）默认昵称
      * </pre>
      *
      * <code>optional string defaultNick = 3;</code>
@@ -2002,6 +2027,33 @@ public final class Request {
       return pwd_;
     }
 
+    public static final int PWD_OLD_FIELD_NUMBER = 5;
+    private com.google.protobuf.ByteString pwdOld_;
+    /**
+     * <pre>
+     *（可选，仅在修改密码时）旧密码
+     * </pre>
+     *
+     * <code>optional bytes pwd_old = 5;</code>
+     * @return Whether the pwdOld field is set.
+     */
+    @java.lang.Override
+    public boolean hasPwdOld() {
+      return ((bitField0_ & 0x00000008) != 0);
+    }
+    /**
+     * <pre>
+     *（可选，仅在修改密码时）旧密码
+     * </pre>
+     *
+     * <code>optional bytes pwd_old = 5;</code>
+     * @return The pwdOld.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getPwdOld() {
+      return pwdOld_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -2028,6 +2080,9 @@ public final class Request {
       if (!pwd_.isEmpty()) {
         output.writeBytes(4, pwd_);
       }
+      if (((bitField0_ & 0x00000008) != 0)) {
+        output.writeBytes(5, pwdOld_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -2050,6 +2105,10 @@ public final class Request {
       if (!pwd_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(4, pwd_);
+      }
+      if (((bitField0_ & 0x00000008) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(5, pwdOld_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2083,6 +2142,11 @@ public final class Request {
       }
       if (!getPwd()
           .equals(other.getPwd())) return false;
+      if (hasPwdOld() != other.hasPwdOld()) return false;
+      if (hasPwdOld()) {
+        if (!getPwdOld()
+            .equals(other.getPwdOld())) return false;
+      }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -2109,6 +2173,10 @@ public final class Request {
       }
       hash = (37 * hash) + PWD_FIELD_NUMBER;
       hash = (53 * hash) + getPwd().hashCode();
+      if (hasPwdOld()) {
+        hash = (37 * hash) + PWD_OLD_FIELD_NUMBER;
+        hash = (53 * hash) + getPwdOld().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -2254,6 +2322,8 @@ public final class Request {
         bitField0_ = (bitField0_ & ~0x00000004);
         pwd_ = com.google.protobuf.ByteString.EMPTY;
 
+        pwdOld_ = com.google.protobuf.ByteString.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -2295,6 +2365,10 @@ public final class Request {
         }
         result.defaultNick_ = defaultNick_;
         result.pwd_ = pwd_;
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.pwdOld_ = pwdOld_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -2360,6 +2434,9 @@ public final class Request {
         if (other.getPwd() != com.google.protobuf.ByteString.EMPTY) {
           setPwd(other.getPwd());
         }
+        if (other.hasPwdOld()) {
+          setPwdOld(other.getPwdOld());
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -2393,7 +2470,7 @@ public final class Request {
       private long uid_ ;
       /**
        * <pre>
-       *账号
+       *（可选，仅在登录时）账号
        * </pre>
        *
        * <code>optional int64 uid = 1;</code>
@@ -2405,7 +2482,7 @@ public final class Request {
       }
       /**
        * <pre>
-       *账号
+       *（可选，仅在登录时）账号
        * </pre>
        *
        * <code>optional int64 uid = 1;</code>
@@ -2417,7 +2494,7 @@ public final class Request {
       }
       /**
        * <pre>
-       *账号
+       *（可选，仅在登录时）账号
        * </pre>
        *
        * <code>optional int64 uid = 1;</code>
@@ -2432,7 +2509,7 @@ public final class Request {
       }
       /**
        * <pre>
-       *账号
+       *（可选，仅在登录时）账号
        * </pre>
        *
        * <code>optional int64 uid = 1;</code>
@@ -2448,7 +2525,7 @@ public final class Request {
       private java.lang.Object email_ = "";
       /**
        * <pre>
-       *邮箱（注册时为必须）
+       *（注册时必须）邮箱
        * </pre>
        *
        * <code>optional string email = 2;</code>
@@ -2459,7 +2536,7 @@ public final class Request {
       }
       /**
        * <pre>
-       *邮箱（注册时为必须）
+       *（注册时必须）邮箱
        * </pre>
        *
        * <code>optional string email = 2;</code>
@@ -2479,7 +2556,7 @@ public final class Request {
       }
       /**
        * <pre>
-       *邮箱（注册时为必须）
+       *（注册时必须）邮箱
        * </pre>
        *
        * <code>optional string email = 2;</code>
@@ -2500,7 +2577,7 @@ public final class Request {
       }
       /**
        * <pre>
-       *邮箱（注册时为必须）
+       *（注册时必须）邮箱
        * </pre>
        *
        * <code>optional string email = 2;</code>
@@ -2519,7 +2596,7 @@ public final class Request {
       }
       /**
        * <pre>
-       *邮箱（注册时为必须）
+       *（注册时必须）邮箱
        * </pre>
        *
        * <code>optional string email = 2;</code>
@@ -2533,7 +2610,7 @@ public final class Request {
       }
       /**
        * <pre>
-       *邮箱（注册时为必须）
+       *（注册时必须）邮箱
        * </pre>
        *
        * <code>optional string email = 2;</code>
@@ -2555,7 +2632,7 @@ public final class Request {
       private java.lang.Object defaultNick_ = "";
       /**
        * <pre>
-       *（仅在注册时）默认昵称
+       *（可选，仅在注册时）默认昵称
        * </pre>
        *
        * <code>optional string defaultNick = 3;</code>
@@ -2566,7 +2643,7 @@ public final class Request {
       }
       /**
        * <pre>
-       *（仅在注册时）默认昵称
+       *（可选，仅在注册时）默认昵称
        * </pre>
        *
        * <code>optional string defaultNick = 3;</code>
@@ -2586,7 +2663,7 @@ public final class Request {
       }
       /**
        * <pre>
-       *（仅在注册时）默认昵称
+       *（可选，仅在注册时）默认昵称
        * </pre>
        *
        * <code>optional string defaultNick = 3;</code>
@@ -2607,7 +2684,7 @@ public final class Request {
       }
       /**
        * <pre>
-       *（仅在注册时）默认昵称
+       *（可选，仅在注册时）默认昵称
        * </pre>
        *
        * <code>optional string defaultNick = 3;</code>
@@ -2626,7 +2703,7 @@ public final class Request {
       }
       /**
        * <pre>
-       *（仅在注册时）默认昵称
+       *（可选，仅在注册时）默认昵称
        * </pre>
        *
        * <code>optional string defaultNick = 3;</code>
@@ -2640,7 +2717,7 @@ public final class Request {
       }
       /**
        * <pre>
-       *（仅在注册时）默认昵称
+       *（可选，仅在注册时）默认昵称
        * </pre>
        *
        * <code>optional string defaultNick = 3;</code>
@@ -2701,6 +2778,64 @@ public final class Request {
       public Builder clearPwd() {
         
         pwd_ = getDefaultInstance().getPwd();
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.ByteString pwdOld_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       *（可选，仅在修改密码时）旧密码
+       * </pre>
+       *
+       * <code>optional bytes pwd_old = 5;</code>
+       * @return Whether the pwdOld field is set.
+       */
+      @java.lang.Override
+      public boolean hasPwdOld() {
+        return ((bitField0_ & 0x00000008) != 0);
+      }
+      /**
+       * <pre>
+       *（可选，仅在修改密码时）旧密码
+       * </pre>
+       *
+       * <code>optional bytes pwd_old = 5;</code>
+       * @return The pwdOld.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getPwdOld() {
+        return pwdOld_;
+      }
+      /**
+       * <pre>
+       *（可选，仅在修改密码时）旧密码
+       * </pre>
+       *
+       * <code>optional bytes pwd_old = 5;</code>
+       * @param value The pwdOld to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPwdOld(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        pwdOld_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *（可选，仅在修改密码时）旧密码
+       * </pre>
+       *
+       * <code>optional bytes pwd_old = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPwdOld() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        pwdOld_ = getDefaultInstance().getPwdOld();
         onChanged();
         return this;
       }
@@ -2783,7 +2918,7 @@ public final class Request {
 
     /**
      * <pre>
-     *（可选，加入频道时必须）使用昵称
+     *（加入频道时必须）使用昵称
      * </pre>
      *
      * <code>optional string nick = 2;</code>
@@ -2792,7 +2927,7 @@ public final class Request {
     boolean hasNick();
     /**
      * <pre>
-     *（可选，加入频道时必须）使用昵称
+     *（加入频道时必须）使用昵称
      * </pre>
      *
      * <code>optional string nick = 2;</code>
@@ -2801,7 +2936,7 @@ public final class Request {
     java.lang.String getNick();
     /**
      * <pre>
-     *（可选，加入频道时必须）使用昵称
+     *（加入频道时必须）使用昵称
      * </pre>
      *
      * <code>optional string nick = 2;</code>
@@ -2812,7 +2947,7 @@ public final class Request {
 
     /**
      * <pre>
-     *（可选，加入私有频道时必须）频道密钥
+     *（加入私有频道时必须）频道密钥
      * </pre>
      *
      * <code>optional string ticket = 3;</code>
@@ -2821,7 +2956,7 @@ public final class Request {
     boolean hasTicket();
     /**
      * <pre>
-     *（可选，加入私有频道时必须）频道密钥
+     *（加入私有频道时必须）频道密钥
      * </pre>
      *
      * <code>optional string ticket = 3;</code>
@@ -2830,7 +2965,7 @@ public final class Request {
     java.lang.String getTicket();
     /**
      * <pre>
-     *（可选，加入私有频道时必须）频道密钥
+     *（加入私有频道时必须）频道密钥
      * </pre>
      *
      * <code>optional string ticket = 3;</code>
@@ -2993,7 +3128,7 @@ public final class Request {
     private volatile java.lang.Object nick_;
     /**
      * <pre>
-     *（可选，加入频道时必须）使用昵称
+     *（加入频道时必须）使用昵称
      * </pre>
      *
      * <code>optional string nick = 2;</code>
@@ -3005,7 +3140,7 @@ public final class Request {
     }
     /**
      * <pre>
-     *（可选，加入频道时必须）使用昵称
+     *（加入频道时必须）使用昵称
      * </pre>
      *
      * <code>optional string nick = 2;</code>
@@ -3026,7 +3161,7 @@ public final class Request {
     }
     /**
      * <pre>
-     *（可选，加入频道时必须）使用昵称
+     *（加入频道时必须）使用昵称
      * </pre>
      *
      * <code>optional string nick = 2;</code>
@@ -3051,7 +3186,7 @@ public final class Request {
     private volatile java.lang.Object ticket_;
     /**
      * <pre>
-     *（可选，加入私有频道时必须）频道密钥
+     *（加入私有频道时必须）频道密钥
      * </pre>
      *
      * <code>optional string ticket = 3;</code>
@@ -3063,7 +3198,7 @@ public final class Request {
     }
     /**
      * <pre>
-     *（可选，加入私有频道时必须）频道密钥
+     *（加入私有频道时必须）频道密钥
      * </pre>
      *
      * <code>optional string ticket = 3;</code>
@@ -3084,7 +3219,7 @@ public final class Request {
     }
     /**
      * <pre>
-     *（可选，加入私有频道时必须）频道密钥
+     *（加入私有频道时必须）频道密钥
      * </pre>
      *
      * <code>optional string ticket = 3;</code>
@@ -3566,7 +3701,7 @@ public final class Request {
       private java.lang.Object nick_ = "";
       /**
        * <pre>
-       *（可选，加入频道时必须）使用昵称
+       *（加入频道时必须）使用昵称
        * </pre>
        *
        * <code>optional string nick = 2;</code>
@@ -3577,7 +3712,7 @@ public final class Request {
       }
       /**
        * <pre>
-       *（可选，加入频道时必须）使用昵称
+       *（加入频道时必须）使用昵称
        * </pre>
        *
        * <code>optional string nick = 2;</code>
@@ -3597,7 +3732,7 @@ public final class Request {
       }
       /**
        * <pre>
-       *（可选，加入频道时必须）使用昵称
+       *（加入频道时必须）使用昵称
        * </pre>
        *
        * <code>optional string nick = 2;</code>
@@ -3618,7 +3753,7 @@ public final class Request {
       }
       /**
        * <pre>
-       *（可选，加入频道时必须）使用昵称
+       *（加入频道时必须）使用昵称
        * </pre>
        *
        * <code>optional string nick = 2;</code>
@@ -3637,7 +3772,7 @@ public final class Request {
       }
       /**
        * <pre>
-       *（可选，加入频道时必须）使用昵称
+       *（加入频道时必须）使用昵称
        * </pre>
        *
        * <code>optional string nick = 2;</code>
@@ -3651,7 +3786,7 @@ public final class Request {
       }
       /**
        * <pre>
-       *（可选，加入频道时必须）使用昵称
+       *（加入频道时必须）使用昵称
        * </pre>
        *
        * <code>optional string nick = 2;</code>
@@ -3673,7 +3808,7 @@ public final class Request {
       private java.lang.Object ticket_ = "";
       /**
        * <pre>
-       *（可选，加入私有频道时必须）频道密钥
+       *（加入私有频道时必须）频道密钥
        * </pre>
        *
        * <code>optional string ticket = 3;</code>
@@ -3684,7 +3819,7 @@ public final class Request {
       }
       /**
        * <pre>
-       *（可选，加入私有频道时必须）频道密钥
+       *（加入私有频道时必须）频道密钥
        * </pre>
        *
        * <code>optional string ticket = 3;</code>
@@ -3704,7 +3839,7 @@ public final class Request {
       }
       /**
        * <pre>
-       *（可选，加入私有频道时必须）频道密钥
+       *（加入私有频道时必须）频道密钥
        * </pre>
        *
        * <code>optional string ticket = 3;</code>
@@ -3725,7 +3860,7 @@ public final class Request {
       }
       /**
        * <pre>
-       *（可选，加入私有频道时必须）频道密钥
+       *（加入私有频道时必须）频道密钥
        * </pre>
        *
        * <code>optional string ticket = 3;</code>
@@ -3744,7 +3879,7 @@ public final class Request {
       }
       /**
        * <pre>
-       *（可选，加入私有频道时必须）频道密钥
+       *（加入私有频道时必须）频道密钥
        * </pre>
        *
        * <code>optional string ticket = 3;</code>
@@ -3758,7 +3893,7 @@ public final class Request {
       }
       /**
        * <pre>
-       *（可选，加入私有频道时必须）频道密钥
+       *（加入私有频道时必须）频道密钥
        * </pre>
        *
        * <code>optional string ticket = 3;</code>
@@ -4570,15 +4705,16 @@ public final class Request {
       "\022\t\n\005LOGIN\020\002\022\n\n\006LOGOUT\020\003\022\017\n\013UPDATE_INFO\020\004" +
       "\022\014\n\010JOIN_CHA\020\005\022\014\n\010QUIT_CHA\020\006\022\016\n\nCREATE_C" +
       "HA\020\007\022\014\n\010SEND_MSG\020\010\022\r\n\tHEARTBEAT\020\tB\007\n\005_us" +
-      "erB\n\n\010_channelB\n\n\010_message\"u\n\004User\022\020\n\003ui" +
-      "d\030\001 \001(\003H\000\210\001\001\022\022\n\005email\030\002 \001(\tH\001\210\001\001\022\030\n\013defa" +
-      "ultNick\030\003 \001(\tH\002\210\001\001\022\013\n\003pwd\030\004 \001(\014B\006\n\004_uidB" +
-      "\010\n\006_emailB\016\n\014_defaultNick\"S\n\007Channel\022\014\n\004" +
-      "name\030\001 \001(\t\022\021\n\004nick\030\002 \001(\tH\000\210\001\001\022\023\n\006ticket\030" +
-      "\003 \001(\tH\001\210\001\001B\007\n\005_nickB\t\n\007_ticket\";\n\007Messag" +
-      "e\022\014\n\004type\030\001 \001(\005\022\021\n\ttimestamp\030\002 \001(\003\022\017\n\007co" +
-      "ntent\030\003 \001(\014B(\n\033cn.csuosa.chatroomcli.pro" +
-      "toB\007RequestH\001b\006proto3"
+      "erB\n\n\010_channelB\n\n\010_message\"\227\001\n\004User\022\020\n\003u" +
+      "id\030\001 \001(\003H\000\210\001\001\022\022\n\005email\030\002 \001(\tH\001\210\001\001\022\030\n\013def" +
+      "aultNick\030\003 \001(\tH\002\210\001\001\022\013\n\003pwd\030\004 \001(\014\022\024\n\007pwd_" +
+      "old\030\005 \001(\014H\003\210\001\001B\006\n\004_uidB\010\n\006_emailB\016\n\014_def" +
+      "aultNickB\n\n\010_pwd_old\"S\n\007Channel\022\014\n\004name\030" +
+      "\001 \001(\t\022\021\n\004nick\030\002 \001(\tH\000\210\001\001\022\023\n\006ticket\030\003 \001(\t" +
+      "H\001\210\001\001B\007\n\005_nickB\t\n\007_ticket\";\n\007Message\022\014\n\004" +
+      "type\030\001 \001(\005\022\021\n\ttimestamp\030\002 \001(\003\022\017\n\007content" +
+      "\030\003 \001(\014B(\n\033cn.csuosa.chatroomcli.protoB\007R" +
+      "equestH\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -4595,7 +4731,7 @@ public final class Request {
     internal_static_cn_csuosa_pojo_request_User_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cn_csuosa_pojo_request_User_descriptor,
-        new java.lang.String[] { "Uid", "Email", "DefaultNick", "Pwd", "Uid", "Email", "DefaultNick", });
+        new java.lang.String[] { "Uid", "Email", "DefaultNick", "Pwd", "PwdOld", "Uid", "Email", "DefaultNick", "PwdOld", });
     internal_static_cn_csuosa_pojo_request_Channel_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_cn_csuosa_pojo_request_Channel_fieldAccessorTable = new

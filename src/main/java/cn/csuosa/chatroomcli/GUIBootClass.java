@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
+import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -93,7 +94,7 @@ public class GUIBootClass extends Application
             mainStage.setScene(mainWindowScene);
             mainStage.initStyle(StageStyle.TRANSPARENT);
             mainStage.setTitle("IRC-ChatRoom 聊天");
-            mainStage.setX(screenBounds.getWidth()-400);
+            mainStage.setX(screenBounds.getWidth() - 400);
             mainStage.setY(20);
             mainStage.setMinWidth(mainWindowScene.getWidth());
             mainStage.setMinHeight(mainWindowScene.getHeight());

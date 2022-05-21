@@ -27,17 +27,18 @@ message RequestPOJO
 
 //用于注册、登录
 message User {
-  optional int64 uid = 1;  //账号
-  optional string email = 2;  //邮箱（注册时为必须）
-  optional string defaultNick = 3; //（仅在注册时）默认昵称
+  optional int64 uid = 1;  //（可选，仅在登录时）账号
+  optional string email = 2;  //（注册时必须）邮箱
+  optional string defaultNick = 3; //（可选，仅在注册时）默认昵称
   bytes pwd = 4; //密码
+  optional bytes pwd_old = 5; //（可选，仅在修改密码时）旧密码
 }
 
 //用于加入、退出、创建频道，以及发送消息
 message Channel {
   string          name = 1;  //频道名
-  optional string nick = 2;  //（可选，加入频道时必须）使用昵称
-  optional string ticket = 3;  //（可选，加入私有频道时必须）频道密钥
+  optional string nick = 2;  //（加入频道时必须）使用昵称
+  optional string ticket = 3;  //（加入私有频道时必须）频道密钥
 }
 
 //用于发送消息
